@@ -3,6 +3,7 @@
 
 CMakeFiles/openglexample.dir/src/Object3D.cpp.o
  /home/ruhtra/E4_hmd/src/Object3D.cpp
+ /home/ruhtra/E4_hmd/src/controls.hpp
  /home/ruhtra/E4_hmd/src/objloader.hpp
  /home/ruhtra/E4_hmd/src/texture.hpp
  /home/ruhtra/E4_hmd/src/vboindexer.hpp

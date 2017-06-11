@@ -10,7 +10,8 @@ class Object3D
 {
 public:
   //! Default constructor
-  Object3D(const char * obj_file,
+  Object3D(glm::mat4 m,
+           const char * obj_file,
            const char * texture_file,
            const char * vert_shader_file,
            const char * frag_shader_file);

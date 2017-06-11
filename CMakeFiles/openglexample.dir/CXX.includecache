@@ -21,6 +21,8 @@ glm/gtc/matrix_transform.hpp
 -
 iostream
 -
+controls.hpp
+/home/ruhtra/E4_hmd/src/controls.hpp
 objloader.hpp
 /home/ruhtra/E4_hmd/src/objloader.hpp
 vboindexer.hpp
@@ -50,6 +52,8 @@ GL/glew.h
 GLFW/glfw3.h
 -
 glm/glm.hpp
+-
+glm/gtc/matrix_transform.hpp
 -
 shader.hpp
 /home/ruhtra/E4_hmd/src/shader.hpp
