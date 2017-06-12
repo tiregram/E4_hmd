@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/openglexample.dir/src/Object3D.cpp.o"
+  "CMakeFiles/openglexample.dir/src/Scene.cpp.o"
   "CMakeFiles/openglexample.dir/src/controls.cpp.o"
   "CMakeFiles/openglexample.dir/src/main.cpp.o"
   "CMakeFiles/openglexample.dir/src/objloader.cpp.o"

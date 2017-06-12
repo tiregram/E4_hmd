@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ruhtra/E4_hmd/src/Object3D.cpp" "/home/ruhtra/E4_hmd/CMakeFiles/openglexample.dir/src/Object3D.cpp.o"
+  "/home/ruhtra/E4_hmd/src/Scene.cpp" "/home/ruhtra/E4_hmd/CMakeFiles/openglexample.dir/src/Scene.cpp.o"
   "/home/ruhtra/E4_hmd/src/controls.cpp" "/home/ruhtra/E4_hmd/CMakeFiles/openglexample.dir/src/controls.cpp.o"
   "/home/ruhtra/E4_hmd/src/main.cpp" "/home/ruhtra/E4_hmd/CMakeFiles/openglexample.dir/src/main.cpp.o"
   "/home/ruhtra/E4_hmd/src/objloader.cpp" "/home/ruhtra/E4_hmd/CMakeFiles/openglexample.dir/src/objloader.cpp.o"

@@ -70,9 +70,8 @@ void Object3D::draw() {
   glUniform1i(TextureID, 0);
 
   /////////////////////////////////////////////////////////////////////////////
-  //                             separation line                             //
+  //                             load obj                             //
   /////////////////////////////////////////////////////////////////////////////
-
   glEnableVertexAttribArray(0);
   glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
@@ -88,11 +87,15 @@ void Object3D::draw() {
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementBufferID);
 
   glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_SHORT, (void*)0);
+
+  glDisableVertexAttribArray(0);
+  glDisableVertexAttribArray(1);
+  glDisableVertexAttribArray(2);
 }
 
 
 void Object3D::createObject(const char* obj_file) {
-	bool res = loadOBJ(obj_file, vertices, uvs, normals);
+	bool res = loadAssImp(obj_file,indices, vertices, uvs, normals);
 
   if(!res)
     {

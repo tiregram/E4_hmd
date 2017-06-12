@@ -9,6 +9,10 @@ CMakeFiles/openglexample.dir/src/Object3D.cpp.o: src/vboindexer.hpp
 CMakeFiles/openglexample.dir/src/Object3D.cpp.o: include/Object3D.hpp
 CMakeFiles/openglexample.dir/src/Object3D.cpp.o: include/shader.hpp
 
+CMakeFiles/openglexample.dir/src/Scene.cpp.o: src/Scene.cpp
+CMakeFiles/openglexample.dir/src/Scene.cpp.o: include/Scene.hpp
+CMakeFiles/openglexample.dir/src/Scene.cpp.o: include/shader.hpp
+
 CMakeFiles/openglexample.dir/src/controls.cpp.o: src/controls.cpp
 CMakeFiles/openglexample.dir/src/controls.cpp.o: src/controls.hpp
 

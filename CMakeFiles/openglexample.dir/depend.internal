@@ -9,6 +9,10 @@ CMakeFiles/openglexample.dir/src/Object3D.cpp.o
  /home/ruhtra/E4_hmd/src/vboindexer.hpp
  include/Object3D.hpp
  include/shader.hpp
+CMakeFiles/openglexample.dir/src/Scene.cpp.o
+ /home/ruhtra/E4_hmd/src/Scene.cpp
+ include/Scene.hpp
+ include/shader.hpp
 CMakeFiles/openglexample.dir/src/controls.cpp.o
  /home/ruhtra/E4_hmd/src/controls.cpp
  /home/ruhtra/E4_hmd/src/controls.hpp

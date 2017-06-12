@@ -50,10 +50,6 @@ int createGLFWContext()
   glfwPollEvents();
   glfwSetCursorPos(window, 1920/2, 1080/2);
 
-
-
-
-
 }
 
 
@@ -69,8 +65,36 @@ int createGLEW()
     return -1;
   }
 
-    
+}
 
+
+int create_opengl()
+{
+	// Dark blue background
+  glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+
+	// Enable depth test
+	glEnable(GL_DEPTH_TEST);
+	// Accept fragment if it closer to the camera than the former one
+	glDepthFunc(GL_LESS);
+
+	// Cull triangles which normal is not towards the camera
+	glEnable(GL_CULL_FACE);
+
+
+	GLuint VertexArrayID;
+	glGenVertexArrays(1, &VertexArrayID);
+	glBindVertexArray(VertexArrayID);
+
+}
+
+int update(std::vector<Object3D*>& a)
+{
+  for(auto& one_obj : a)
+    {
+      double t = 0.1;
+      one_obj->update(t);
+    }
 }
 
 int draw(std::vector<Object3D*>& a)
@@ -89,10 +113,6 @@ int draw(std::vector<Object3D*>& a)
         one_obj->draw();
       }
 
-		glDisableVertexAttribArray(0);
-		glDisableVertexAttribArray(1);
-		glDisableVertexAttribArray(2);
-
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
@@ -106,31 +126,13 @@ int main(int argc, char *argv[])
 {
   createGLFWContext();
   createGLEW();
-  // Set the mouse at the center of the screen
-  glfwPollEvents();
-  glfwSetCursorPos(window, 1024/2, 768/2);
-
-	// Dark blue background
-  glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
-
-	// Enable depth test
-	glEnable(GL_DEPTH_TEST);
-	// Accept fragment if it closer to the camera than the former one
-	glDepthFunc(GL_LESS);
-
-	// Cull triangles which normal is not towards the camera
-	glEnable(GL_CULL_FACE);
-
-
-	GLuint VertexArrayID;
-	glGenVertexArrays(1, &VertexArrayID);
-	glBindVertexArray(VertexArrayID);
+  create_opengl();
 
   std::vector<Object3D*> objs;
   glm::mat4 d(1.0);
   glm::mat4 x=glm::translate(d,glm::vec3(2.0f, 0.0f, 0.0f));
   objs.push_back(new Object3D(x,
-                              "obj/suzanne.obj",
+                              "obj/untitled.obj",
                               "obj/uvmap.DDS",
                               "shader/StandardShading.vertexshader",
                               "shader/StandardShading.fragmentshader"));
@@ -149,6 +151,7 @@ int main(int argc, char *argv[])
                               "shader/StandardShading.vertexshader",
                               "shader/StandardShading.fragmentshader"));
 
+  update(objs);
   draw(objs);
 
   for(auto& a : objs )

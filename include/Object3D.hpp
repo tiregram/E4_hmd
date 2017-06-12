@@ -43,7 +43,6 @@ public:
   /////////////////////////////////////////////////////////////////////////////
   //                                 OGL PART                                //
   /////////////////////////////////////////////////////////////////////////////
-
   GLuint VertexArrayID;
   GLuint programID;
   GLuint vertexBufferID;
@@ -58,10 +57,10 @@ public:
 
 	GLuint Texture;
   GLuint TextureID;
+
   /////////////////////////////////////////////////////////////////////////////
   //                                 3D PART                                 //
   /////////////////////////////////////////////////////////////////////////////
-
 	std::vector<glm::vec3> vertices;
 	std::vector<glm::vec2> uvs;
 	std::vector<glm::vec3> normals;
@@ -70,7 +69,6 @@ public:
 	std::vector<glm::vec3> indexed_vertices;
 	std::vector<glm::vec2> indexed_uvs;
 	std::vector<glm::vec3> indexed_normals;
-
 
   glm::mat4 projectionMatrix ;
   glm::mat4 modelMatrix;

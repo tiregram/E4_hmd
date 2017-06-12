@@ -81,9 +81,33 @@ CMakeFiles/openglexample.dir/src/Object3D.cpp.o.provides: CMakeFiles/openglexamp
 CMakeFiles/openglexample.dir/src/Object3D.cpp.o.provides.build: CMakeFiles/openglexample.dir/src/Object3D.cpp.o
 
 
+CMakeFiles/openglexample.dir/src/Scene.cpp.o: CMakeFiles/openglexample.dir/flags.make
+CMakeFiles/openglexample.dir/src/Scene.cpp.o: src/Scene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/openglexample.dir/src/Scene.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/openglexample.dir/src/Scene.cpp.o -c /home/ruhtra/E4_hmd/src/Scene.cpp
+
+CMakeFiles/openglexample.dir/src/Scene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/openglexample.dir/src/Scene.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruhtra/E4_hmd/src/Scene.cpp > CMakeFiles/openglexample.dir/src/Scene.cpp.i
+
+CMakeFiles/openglexample.dir/src/Scene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/openglexample.dir/src/Scene.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruhtra/E4_hmd/src/Scene.cpp -o CMakeFiles/openglexample.dir/src/Scene.cpp.s
+
+CMakeFiles/openglexample.dir/src/Scene.cpp.o.requires:
+
+.PHONY : CMakeFiles/openglexample.dir/src/Scene.cpp.o.requires
+
+CMakeFiles/openglexample.dir/src/Scene.cpp.o.provides: CMakeFiles/openglexample.dir/src/Scene.cpp.o.requires
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Scene.cpp.o.provides.build
+.PHONY : CMakeFiles/openglexample.dir/src/Scene.cpp.o.provides
+
+CMakeFiles/openglexample.dir/src/Scene.cpp.o.provides.build: CMakeFiles/openglexample.dir/src/Scene.cpp.o
+
+
 CMakeFiles/openglexample.dir/src/controls.cpp.o: CMakeFiles/openglexample.dir/flags.make
 CMakeFiles/openglexample.dir/src/controls.cpp.o: src/controls.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/openglexample.dir/src/controls.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/openglexample.dir/src/controls.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/openglexample.dir/src/controls.cpp.o -c /home/ruhtra/E4_hmd/src/controls.cpp
 
 CMakeFiles/openglexample.dir/src/controls.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/openglexample.dir/src/controls.cpp.o.provides.build: CMakeFiles/openg
 
 CMakeFiles/openglexample.dir/src/main.cpp.o: CMakeFiles/openglexample.dir/flags.make
 CMakeFiles/openglexample.dir/src/main.cpp.o: src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/openglexample.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/openglexample.dir/src/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/openglexample.dir/src/main.cpp.o -c /home/ruhtra/E4_hmd/src/main.cpp
 
 CMakeFiles/openglexample.dir/src/main.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/openglexample.dir/src/main.cpp.o.provides.build: CMakeFiles/openglexa
 
 CMakeFiles/openglexample.dir/src/objloader.cpp.o: CMakeFiles/openglexample.dir/flags.make
 CMakeFiles/openglexample.dir/src/objloader.cpp.o: src/objloader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/openglexample.dir/src/objloader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/openglexample.dir/src/objloader.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/openglexample.dir/src/objloader.cpp.o -c /home/ruhtra/E4_hmd/src/objloader.cpp
 
 CMakeFiles/openglexample.dir/src/objloader.cpp.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/openglexample.dir/src/objloader.cpp.o.provides.build: CMakeFiles/open
 
 CMakeFiles/openglexample.dir/src/shader.cpp.o: CMakeFiles/openglexample.dir/flags.make
 CMakeFiles/openglexample.dir/src/shader.cpp.o: src/shader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/openglexample.dir/src/shader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/openglexample.dir/src/shader.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/openglexample.dir/src/shader.cpp.o -c /home/ruhtra/E4_hmd/src/shader.cpp
 
 CMakeFiles/openglexample.dir/src/shader.cpp.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/openglexample.dir/src/shader.cpp.o.provides.build: CMakeFiles/opengle
 
 CMakeFiles/openglexample.dir/src/texture.cpp.o: CMakeFiles/openglexample.dir/flags.make
 CMakeFiles/openglexample.dir/src/texture.cpp.o: src/texture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/openglexample.dir/src/texture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/openglexample.dir/src/texture.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/openglexample.dir/src/texture.cpp.o -c /home/ruhtra/E4_hmd/src/texture.cpp
 
 CMakeFiles/openglexample.dir/src/texture.cpp.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/openglexample.dir/src/texture.cpp.o.provides.build: CMakeFiles/opengl
 
 CMakeFiles/openglexample.dir/src/vboindexer.cpp.o: CMakeFiles/openglexample.dir/flags.make
 CMakeFiles/openglexample.dir/src/vboindexer.cpp.o: src/vboindexer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/openglexample.dir/src/vboindexer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/openglexample.dir/src/vboindexer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/openglexample.dir/src/vboindexer.cpp.o -c /home/ruhtra/E4_hmd/src/vboindexer.cpp
 
 CMakeFiles/openglexample.dir/src/vboindexer.cpp.i: cmake_force
@@ -228,6 +252,7 @@ CMakeFiles/openglexample.dir/src/vboindexer.cpp.o.provides.build: CMakeFiles/ope
 # Object files for target openglexample
 openglexample_OBJECTS = \
 "CMakeFiles/openglexample.dir/src/Object3D.cpp.o" \
+"CMakeFiles/openglexample.dir/src/Scene.cpp.o" \
 "CMakeFiles/openglexample.dir/src/controls.cpp.o" \
 "CMakeFiles/openglexample.dir/src/main.cpp.o" \
 "CMakeFiles/openglexample.dir/src/objloader.cpp.o" \
@@ -239,6 +264,7 @@ openglexample_OBJECTS = \
 openglexample_EXTERNAL_OBJECTS =
 
 openglexample: CMakeFiles/openglexample.dir/src/Object3D.cpp.o
+openglexample: CMakeFiles/openglexample.dir/src/Scene.cpp.o
 openglexample: CMakeFiles/openglexample.dir/src/controls.cpp.o
 openglexample: CMakeFiles/openglexample.dir/src/main.cpp.o
 openglexample: CMakeFiles/openglexample.dir/src/objloader.cpp.o
@@ -253,7 +279,7 @@ openglexample: /usr/lib/libGLEW.so
 openglexample: /usr/lib/libGLU.so
 openglexample: /usr/lib/libGL.so
 openglexample: CMakeFiles/openglexample.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable openglexample"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ruhtra/E4_hmd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable openglexample"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/openglexample.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -262,6 +288,7 @@ CMakeFiles/openglexample.dir/build: openglexample
 .PHONY : CMakeFiles/openglexample.dir/build
 
 CMakeFiles/openglexample.dir/requires: CMakeFiles/openglexample.dir/src/Object3D.cpp.o.requires
+CMakeFiles/openglexample.dir/requires: CMakeFiles/openglexample.dir/src/Scene.cpp.o.requires
 CMakeFiles/openglexample.dir/requires: CMakeFiles/openglexample.dir/src/controls.cpp.o.requires
 CMakeFiles/openglexample.dir/requires: CMakeFiles/openglexample.dir/src/main.cpp.o.requires
 CMakeFiles/openglexample.dir/requires: CMakeFiles/openglexample.dir/src/objloader.cpp.o.requires

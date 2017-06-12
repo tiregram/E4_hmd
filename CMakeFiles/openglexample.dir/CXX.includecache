@@ -30,6 +30,16 @@ vboindexer.hpp
 texture.hpp
 /home/ruhtra/E4_hmd/src/texture.hpp
 
+/home/ruhtra/E4_hmd/src/Scene.cpp
+openhmd/openhmd.h
+-
+iostream
+-
+Scene.hpp
+/home/ruhtra/E4_hmd/src/Scene.hpp
+shader.hpp
+/home/ruhtra/E4_hmd/src/shader.hpp
+
 /home/ruhtra/E4_hmd/src/controls.cpp
 GLFW/glfw3.h
 -
@@ -130,6 +140,10 @@ GL/glew.h
 glm/glm.hpp
 -
 vector
+-
+
+include/Scene.hpp
+GL/glew.h
 -
 
 include/shader.hpp
