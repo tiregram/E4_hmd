@@ -1,9 +1,13 @@
 #include <openhmd/openhmd.h>
 #include <iostream>
-
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "Scene.hpp"
 #include "shader.hpp"
+#include "controls.hpp"
 
 #define OVERSAMPLE_SCALE 2.0
 
@@ -107,7 +111,7 @@ Scene::~Scene() noexcept
 
 }
 
-void  Scene::draw() const
+void  Scene::draw()
 {
   do{
 
@@ -117,8 +121,7 @@ void  Scene::draw() const
 
     computeMatricesFromInputs();
 
-    for(auto& one_obj : a ){
-      // std::cout << "draw " <<i++<< "\n";
+    for(auto& one_obj : objects){
       one_obj->draw();
     }
 
@@ -132,7 +135,7 @@ void  Scene::draw() const
 
 }
 
-void  Scene::update() const
+void  Scene::update()
 {
 
 }

@@ -1,3 +1,0 @@
-/home/ruhtra/E4_hmd/CMakeFiles/rebuild_cache.dir
-/home/ruhtra/E4_hmd/CMakeFiles/openglexample.dir
-/home/ruhtra/E4_hmd/CMakeFiles/edit_cache.dir

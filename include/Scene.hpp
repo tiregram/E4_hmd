@@ -1,6 +1,8 @@
 #pragma once
-
+#include <vector>
 #include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include "Object3D.hpp"
 
 class Scene
 {
@@ -25,8 +27,8 @@ public:
 
   void create_fbo(int eye_width, int eye_height, GLuint* fbo, GLuint* color_tex, GLuint* depth_tex);
 
-  void  draw() const;
-  void  update() const;
+  void  draw();
+  void  update() ;
 
 protected:
   GLuint right_color_tex;
@@ -37,7 +39,9 @@ protected:
   GLuint left_depth_tex;
   GLuint left_fbo;
 
+  std::vector<Object3D*> objects;
 private:
+  GLFWwindow* window;
   GLuint shaderHMD;
 };
 
