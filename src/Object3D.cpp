@@ -37,17 +37,17 @@ void Object3D::update(double delta_time) {
 }
 
 void Object3D::draw() {
-  std::cout 
-    << programID<< ","
-    << vertexBufferID<< ","
-    << uvBufferID<< ","
-    << normalBufferID<< ","
-    << elementBufferID<< ","
-    << LightID<< ","
-    << ModelMatrixID << ","
-    << MatrixID<< ","
-    << ViewMatrixID << ","
-    <<indices.size()  << "\n";
+  // std::cout 
+  //   << programID<< ","
+  //   << vertexBufferID<< ","
+  //   << uvBufferID<< ","
+  //   << normalBufferID<< ","
+  //   << elementBufferID<< ","
+  //   << LightID<< ","
+  //   << ModelMatrixID << ","
+  //   << MatrixID<< ","
+  //   << ViewMatrixID << ","
+  //   <<indices.size()  << "\n";
 
   projectionMatrix = getProjectionMatrix();
   viewMatrix = getViewMatrix();
@@ -112,7 +112,7 @@ void Object3D::createOpengl(const char* vert_shader_file, const char* frag_shade
   /////////////////////////////////////////////////////////////////////////////
   //                                  Shader                                 //
   /////////////////////////////////////////////////////////////////////////////
-	programID = LoadShaders( vert_shader_file, frag_shader_file );
+	programID = LoadShadersFromPathFile( vert_shader_file, frag_shader_file );
 
 	MatrixID      = glGetUniformLocation(programID, "MVP");
 	ViewMatrixID  = glGetUniformLocation(programID, "V");

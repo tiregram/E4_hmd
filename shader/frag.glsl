@@ -1,7 +1,13 @@
 #version 330 core
 
-out vec3 color;
+out vec4 color;
+
+in vec2 uv;
+
+uniform sampler2D renderedTexture;
 
 void main(){
-  color = vec3(1,0,0);
+
+  color = texture( renderedTexture, uv);
+
 }

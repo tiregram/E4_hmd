@@ -150,6 +150,33 @@ src/Object3D.cpp.s:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Object3D.cpp.s
 .PHONY : src/Object3D.cpp.s
 
+src/OpenHmdWrapper.o: src/OpenHmdWrapper.cpp.o
+
+.PHONY : src/OpenHmdWrapper.o
+
+# target to build an object file
+src/OpenHmdWrapper.cpp.o:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/OpenHmdWrapper.cpp.o
+.PHONY : src/OpenHmdWrapper.cpp.o
+
+src/OpenHmdWrapper.i: src/OpenHmdWrapper.cpp.i
+
+.PHONY : src/OpenHmdWrapper.i
+
+# target to preprocess a source file
+src/OpenHmdWrapper.cpp.i:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/OpenHmdWrapper.cpp.i
+.PHONY : src/OpenHmdWrapper.cpp.i
+
+src/OpenHmdWrapper.s: src/OpenHmdWrapper.cpp.s
+
+.PHONY : src/OpenHmdWrapper.s
+
+# target to generate assembly for a file
+src/OpenHmdWrapper.cpp.s:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/OpenHmdWrapper.cpp.s
+.PHONY : src/OpenHmdWrapper.cpp.s
+
 src/Scene.o: src/Scene.cpp.o
 
 .PHONY : src/Scene.o
@@ -351,6 +378,9 @@ help:
 	@echo "... src/Object3D.o"
 	@echo "... src/Object3D.i"
 	@echo "... src/Object3D.s"
+	@echo "... src/OpenHmdWrapper.o"
+	@echo "... src/OpenHmdWrapper.i"
+	@echo "... src/OpenHmdWrapper.s"
 	@echo "... src/Scene.o"
 	@echo "... src/Scene.i"
 	@echo "... src/Scene.s"

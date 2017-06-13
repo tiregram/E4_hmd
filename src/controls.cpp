@@ -51,8 +51,8 @@ void computeMatricesFromInputs(){
 	glfwSetCursorPos(window, 1920/2, 1080/2);
 
 	// Compute new orientation
-	horizontalAngle += mouseSpeed * float(1920/2 - xpos );
-	verticalAngle   += mouseSpeed * float( 1080/2 - ypos );
+  //	horizontalAngle += mouseSpeed * float(1920/2 - xpos );
+	//verticalAngle   += mouseSpeed * float( 1080/2 - ypos );
 
 	// Direction : Spherical coordinates to Cartesian coordinates conversion
 	glm::vec3 direction(

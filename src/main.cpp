@@ -7,7 +7,10 @@
 #include "shader.hpp"
 #include "Object3D.hpp"
 #include "controls.hpp"
+#include "Scene.hpp"
 
+#define GLOB_WIDTH 1000
+#define GLOB_HEIGHT 1000
 GLFWwindow* window;
 
 
@@ -27,7 +30,7 @@ int createGLFWContext()
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-  window = glfwCreateWindow( 1920, 1080, "one", NULL, NULL);
+  window = glfwCreateWindow( GLOB_WIDTH, GLOB_HEIGHT, "one", NULL, NULL);
 
   if( window == NULL ){
     std::cerr<< "Failed to open GLFW window. "
@@ -48,7 +51,7 @@ int createGLFWContext()
 
   // Set the mouse at the center of the screen
   glfwPollEvents();
-  glfwSetCursorPos(window, 1920/2, 1080/2);
+  glfwSetCursorPos(window, GLOB_WIDTH/2, GLOB_HEIGHT/2);
 
 }
 
@@ -60,10 +63,12 @@ int createGLEW()
     std::cerr<<"Failed to initialize GLEW\n";
 		getchar();
 		glfwTerminate();
-		return -1;
-
     return -1;
   }
+
+	printf("OpenGL Renderer: %s\n", glGetString(GL_RENDERER));
+	printf("OpenGL Vendor: %s\n", glGetString(GL_VENDOR));
+	printf("OpenGL Version: %s\n", glGetString(GL_VERSION)); 
 
 }
 
@@ -80,7 +85,6 @@ int create_opengl()
 
 	// Cull triangles which normal is not towards the camera
 	glEnable(GL_CULL_FACE);
-
 
 	GLuint VertexArrayID;
 	glGenVertexArrays(1, &VertexArrayID);
@@ -128,35 +132,43 @@ int main(int argc, char *argv[])
   createGLEW();
   create_opengl();
 
-  std::vector<Object3D*> objs;
+  Scene sce;
+  //std::vector<Object3D*> objs;
   glm::mat4 d(1.0);
-  glm::mat4 x=glm::translate(d,glm::vec3(2.0f, 0.0f, 0.0f));
-  objs.push_back(new Object3D(x,
-                              "obj/untitled.obj",
-                              "obj/uvmap.DDS",
-                              "shader/StandardShading.vertexshader",
-                              "shader/StandardShading.fragmentshader"));
+  glm::mat4 x=glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
 
-  glm::mat4 y=  glm::translate(d,glm::vec3(4.0f, 0.0f, 0.0f));
-  objs.push_back(new Object3D(y,
-                              "obj/suzanne.obj",
-                              "obj/uvmap.DDS",
-                              "shader/StandardShading.vertexshader",
-                              "shader/StandardShading.fragmentshader"));
+  sce.objects.push_back(new Object3D(x,
+                                  "obj/untitled.obj",
+                                  "obj/uvmap.DDS",
+                                  "shader/StandardShading.vertexshader",
+                                  "shader/StandardShading.fragmentshader"));
 
-  glm::mat4 z=  glm::translate(d,glm::vec3(6.0f, 0.0f, 0.0f));
-  objs.push_back(new Object3D(z,
-                              "obj/suzanne.obj",
-                              "obj/uvmap.DDS",
-                              "shader/StandardShading.vertexshader",
-                              "shader/StandardShading.fragmentshader"));
+  // glm::mat4 y=  glm::translate(d,glm::vec3(2.0f, 0.0f, 0.0f));
+  // sce.objects.push_back(new Object3D(y,
+  //                                 "obj/suzanne.obj",
+  //                                 "obj/uvmap.DDS",
+  //                                 "shader/StandardShading.vertexshader",
+  //                                 "shader/StandardShading.fragmentshader"));
 
-  update(objs);
-  draw(objs);
+  // glm::mat4 z=  glm::translate(d,glm::vec3(-2.0f, 0.0f, 0.0f));
+  // sce.objects.push_back(new Object3D(z,
+  //                                 "obj/suzanne.obj",
+  //                                 "obj/uvmap.DDS",
+  //                                 "shader/StandardShading.vertexshader",
+  //                                 "shader/StandardShading.fragmentshader"));
 
-  for(auto& a : objs )
+  // update(objs);
+  //  draw(sce.objects);
+
+  sce.window = window;
+
+  while(sce.update())
+    sce.draw();
+
+  for(auto& a : sce.objects )
     {
       delete(a);
     }
+
   return 0;
 }
