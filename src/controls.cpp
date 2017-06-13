@@ -1,6 +1,6 @@
 // Include GLFW
 #include <GLFW/glfw3.h>
-extern GLFWwindow* window; // The "extern" keyword here is to access the variable "window" declared in tutorialXXX.cpp. This is a hack to keep the tutorials simple. Please avoid this.
+//extern GLFWwindow* window; // The "extern" keyword here is to access the variable "window" declared in tutorialXXX.cpp. This is a hack to keep the tutorials simple. Please avoid this.
 
 // Include GLM
 #include <glm/glm.hpp>
@@ -36,6 +36,7 @@ float mouseSpeed = 0.005f;
 
 void computeMatricesFromInputs(){
 
+
 	// glfwGetTime is called only once, the first time this function is called
 	static double lastTime = glfwGetTime();
 
@@ -51,8 +52,8 @@ void computeMatricesFromInputs(){
 	glfwSetCursorPos(window, 1920/2, 1080/2);
 
 	// Compute new orientation
-  //	horizontalAngle += mouseSpeed * float(1920/2 - xpos );
-	//verticalAngle   += mouseSpeed * float( 1080/2 - ypos );
+  	horizontalAngle += mouseSpeed * float(1920/2 - xpos );
+	verticalAngle   += mouseSpeed * float( 1080/2 - ypos );
 
 	// Direction : Spherical coordinates to Cartesian coordinates conversion
 	glm::vec3 direction(
