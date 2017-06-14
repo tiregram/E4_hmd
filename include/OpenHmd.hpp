@@ -22,8 +22,6 @@ public:
   //! Move assignment operator
   OpenHmdWrapper& operator=(OpenHmdWrapper &&other) noexcept;
 
-
-
 protected:
 private:
 };

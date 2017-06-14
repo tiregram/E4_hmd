@@ -14,7 +14,7 @@
 GLFWwindow* window;
 
 
-int createGLFWContext()
+int createGLFWContext(OpenHmdWrapper& hmd)
 {
   // Initialise GLFW
   if( !glfwInit() )
@@ -30,7 +30,7 @@ int createGLFWContext()
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-  window = glfwCreateWindow( GLOB_WIDTH, GLOB_HEIGHT, "one", NULL, NULL);
+  window = glfwCreateWindow( hmd.get_hmd_w(), hmd.get_hmd_h(), "one", NULL, NULL);
 
   if( window == NULL ){
     std::cerr<< "Failed to open GLFW window. "
@@ -104,9 +104,11 @@ int update(std::vector<Object3D*>& a)
 int draw(std::vector<Object3D*>& a)
 {
 
+  glBindFramebuffer(GL_FRAMEBUFFER,0);
   do{
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClearColor(0.1, 0.0, 0.0, 1.0);
 
     int i = 0;
 
@@ -120,7 +122,7 @@ int draw(std::vector<Object3D*>& a)
 		// Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
-
+    std::cout <<"lapin"  << "\n";
   }while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
          glfwWindowShouldClose(window) == 0 );
 }
@@ -128,11 +130,16 @@ int draw(std::vector<Object3D*>& a)
 
 int main(int argc, char *argv[])
 {
-  createGLFWContext();
+  OpenHmdWrapper hmd= OpenHmdWrapper();
+
+  createGLFWContext(hmd);
   createGLEW();
   create_opengl();
 
-  Scene sce;
+  hmd.createShader();
+
+  Scene sce(hmd);
+
   //std::vector<Object3D*> objs;
   glm::mat4 d(1.0);
   glm::mat4 x=glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
@@ -157,7 +164,7 @@ int main(int argc, char *argv[])
   //                                 "shader/StandardShading.vertexshader",
   //                                 "shader/StandardShading.fragmentshader"));
 
-  // update(objs);
+  //  update(objs);
   //  draw(sce.objects);
 
   sce.window = window;

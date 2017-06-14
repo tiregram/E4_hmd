@@ -204,6 +204,33 @@ src/Scene.cpp.s:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Scene.cpp.s
 .PHONY : src/Scene.cpp.s
 
+src/Side.o: src/Side.cpp.o
+
+.PHONY : src/Side.o
+
+# target to build an object file
+src/Side.cpp.o:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Side.cpp.o
+.PHONY : src/Side.cpp.o
+
+src/Side.i: src/Side.cpp.i
+
+.PHONY : src/Side.i
+
+# target to preprocess a source file
+src/Side.cpp.i:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Side.cpp.i
+.PHONY : src/Side.cpp.i
+
+src/Side.s: src/Side.cpp.s
+
+.PHONY : src/Side.s
+
+# target to generate assembly for a file
+src/Side.cpp.s:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Side.cpp.s
+.PHONY : src/Side.cpp.s
+
 src/controls.o: src/controls.cpp.o
 
 .PHONY : src/controls.o
@@ -384,6 +411,9 @@ help:
 	@echo "... src/Scene.o"
 	@echo "... src/Scene.i"
 	@echo "... src/Scene.s"
+	@echo "... src/Side.o"
+	@echo "... src/Side.i"
+	@echo "... src/Side.s"
 	@echo "... src/controls.o"
 	@echo "... src/controls.i"
 	@echo "... src/controls.s"
