@@ -5,9 +5,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "shader.hpp"
+#include "Shader.hpp"
 #include "Object.hpp"
-#include "controls.hpp"
+#include "Controls.hpp"
 #include "Scene.hpp"
 #include "Debug.hpp"
 

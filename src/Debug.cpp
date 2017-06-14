@@ -3,7 +3,7 @@
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
-#include "controls.hpp"
+#include "Controls.hpp"
 extern GLFWwindow* window;
 
 int draw_debug(std::vector<Object*>& a)

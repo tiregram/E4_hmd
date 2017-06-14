@@ -1,7 +1,7 @@
 
 #include "OpenHmdWrapper.hpp"
 #include <iostream>
-#include "shader.hpp"
+#include "Shader.hpp"
 
 OpenHmdWrapper::OpenHmdWrapper() {
 

@@ -1,14 +1,14 @@
 #include "Object3D.hpp"
-#include "shader.hpp"
+#include "Shader.hpp"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
-#include "controls.hpp"
-#include "objloader.hpp"
-#include "vboindexer.hpp"
-#include "texture.hpp"
+#include "Controls.hpp"
+#include "Objloader.hpp"
+#include "Vboindexer.hpp"
+#include "Texture.hpp"
 
 Object3D::Object3D(glm::mat4 m,
                    const char * obj_file,

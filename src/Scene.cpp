@@ -6,8 +6,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "Scene.hpp"
-#include "shader.hpp"
-#include "controls.hpp"
+#include "Shader.hpp"
+#include "Controls.hpp"
 
 //#define OVERSAMPLE_SCALE 2.0
 

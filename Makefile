@@ -123,6 +123,33 @@ openglexample/fast:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/build
 .PHONY : openglexample/fast
 
+src/Controls.o: src/Controls.cpp.o
+
+.PHONY : src/Controls.o
+
+# target to build an object file
+src/Controls.cpp.o:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Controls.cpp.o
+.PHONY : src/Controls.cpp.o
+
+src/Controls.i: src/Controls.cpp.i
+
+.PHONY : src/Controls.i
+
+# target to preprocess a source file
+src/Controls.cpp.i:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Controls.cpp.i
+.PHONY : src/Controls.cpp.i
+
+src/Controls.s: src/Controls.cpp.s
+
+.PHONY : src/Controls.s
+
+# target to generate assembly for a file
+src/Controls.cpp.s:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Controls.cpp.s
+.PHONY : src/Controls.cpp.s
+
 src/Debug.o: src/Debug.cpp.o
 
 .PHONY : src/Debug.o
@@ -176,6 +203,33 @@ src/Object3D.s: src/Object3D.cpp.s
 src/Object3D.cpp.s:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Object3D.cpp.s
 .PHONY : src/Object3D.cpp.s
+
+src/Objloader.o: src/Objloader.cpp.o
+
+.PHONY : src/Objloader.o
+
+# target to build an object file
+src/Objloader.cpp.o:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Objloader.cpp.o
+.PHONY : src/Objloader.cpp.o
+
+src/Objloader.i: src/Objloader.cpp.i
+
+.PHONY : src/Objloader.i
+
+# target to preprocess a source file
+src/Objloader.cpp.i:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Objloader.cpp.i
+.PHONY : src/Objloader.cpp.i
+
+src/Objloader.s: src/Objloader.cpp.s
+
+.PHONY : src/Objloader.s
+
+# target to generate assembly for a file
+src/Objloader.cpp.s:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Objloader.cpp.s
+.PHONY : src/Objloader.cpp.s
 
 src/OpenHmdWrapper.o: src/OpenHmdWrapper.cpp.o
 
@@ -231,6 +285,33 @@ src/Scene.cpp.s:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Scene.cpp.s
 .PHONY : src/Scene.cpp.s
 
+src/Shader.o: src/Shader.cpp.o
+
+.PHONY : src/Shader.o
+
+# target to build an object file
+src/Shader.cpp.o:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Shader.cpp.o
+.PHONY : src/Shader.cpp.o
+
+src/Shader.i: src/Shader.cpp.i
+
+.PHONY : src/Shader.i
+
+# target to preprocess a source file
+src/Shader.cpp.i:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Shader.cpp.i
+.PHONY : src/Shader.cpp.i
+
+src/Shader.s: src/Shader.cpp.s
+
+.PHONY : src/Shader.s
+
+# target to generate assembly for a file
+src/Shader.cpp.s:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Shader.cpp.s
+.PHONY : src/Shader.cpp.s
+
 src/Side.o: src/Side.cpp.o
 
 .PHONY : src/Side.o
@@ -258,32 +339,59 @@ src/Side.cpp.s:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Side.cpp.s
 .PHONY : src/Side.cpp.s
 
-src/controls.o: src/controls.cpp.o
+src/Texture.o: src/Texture.cpp.o
 
-.PHONY : src/controls.o
+.PHONY : src/Texture.o
 
 # target to build an object file
-src/controls.cpp.o:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/controls.cpp.o
-.PHONY : src/controls.cpp.o
+src/Texture.cpp.o:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Texture.cpp.o
+.PHONY : src/Texture.cpp.o
 
-src/controls.i: src/controls.cpp.i
+src/Texture.i: src/Texture.cpp.i
 
-.PHONY : src/controls.i
+.PHONY : src/Texture.i
 
 # target to preprocess a source file
-src/controls.cpp.i:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/controls.cpp.i
-.PHONY : src/controls.cpp.i
+src/Texture.cpp.i:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Texture.cpp.i
+.PHONY : src/Texture.cpp.i
 
-src/controls.s: src/controls.cpp.s
+src/Texture.s: src/Texture.cpp.s
 
-.PHONY : src/controls.s
+.PHONY : src/Texture.s
 
 # target to generate assembly for a file
-src/controls.cpp.s:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/controls.cpp.s
-.PHONY : src/controls.cpp.s
+src/Texture.cpp.s:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Texture.cpp.s
+.PHONY : src/Texture.cpp.s
+
+src/Vboindexer.o: src/Vboindexer.cpp.o
+
+.PHONY : src/Vboindexer.o
+
+# target to build an object file
+src/Vboindexer.cpp.o:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Vboindexer.cpp.o
+.PHONY : src/Vboindexer.cpp.o
+
+src/Vboindexer.i: src/Vboindexer.cpp.i
+
+.PHONY : src/Vboindexer.i
+
+# target to preprocess a source file
+src/Vboindexer.cpp.i:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Vboindexer.cpp.i
+.PHONY : src/Vboindexer.cpp.i
+
+src/Vboindexer.s: src/Vboindexer.cpp.s
+
+.PHONY : src/Vboindexer.s
+
+# target to generate assembly for a file
+src/Vboindexer.cpp.s:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Vboindexer.cpp.s
+.PHONY : src/Vboindexer.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -312,114 +420,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/objloader.o: src/objloader.cpp.o
-
-.PHONY : src/objloader.o
-
-# target to build an object file
-src/objloader.cpp.o:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/objloader.cpp.o
-.PHONY : src/objloader.cpp.o
-
-src/objloader.i: src/objloader.cpp.i
-
-.PHONY : src/objloader.i
-
-# target to preprocess a source file
-src/objloader.cpp.i:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/objloader.cpp.i
-.PHONY : src/objloader.cpp.i
-
-src/objloader.s: src/objloader.cpp.s
-
-.PHONY : src/objloader.s
-
-# target to generate assembly for a file
-src/objloader.cpp.s:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/objloader.cpp.s
-.PHONY : src/objloader.cpp.s
-
-src/shader.o: src/shader.cpp.o
-
-.PHONY : src/shader.o
-
-# target to build an object file
-src/shader.cpp.o:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/shader.cpp.o
-.PHONY : src/shader.cpp.o
-
-src/shader.i: src/shader.cpp.i
-
-.PHONY : src/shader.i
-
-# target to preprocess a source file
-src/shader.cpp.i:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/shader.cpp.i
-.PHONY : src/shader.cpp.i
-
-src/shader.s: src/shader.cpp.s
-
-.PHONY : src/shader.s
-
-# target to generate assembly for a file
-src/shader.cpp.s:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/shader.cpp.s
-.PHONY : src/shader.cpp.s
-
-src/texture.o: src/texture.cpp.o
-
-.PHONY : src/texture.o
-
-# target to build an object file
-src/texture.cpp.o:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/texture.cpp.o
-.PHONY : src/texture.cpp.o
-
-src/texture.i: src/texture.cpp.i
-
-.PHONY : src/texture.i
-
-# target to preprocess a source file
-src/texture.cpp.i:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/texture.cpp.i
-.PHONY : src/texture.cpp.i
-
-src/texture.s: src/texture.cpp.s
-
-.PHONY : src/texture.s
-
-# target to generate assembly for a file
-src/texture.cpp.s:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/texture.cpp.s
-.PHONY : src/texture.cpp.s
-
-src/vboindexer.o: src/vboindexer.cpp.o
-
-.PHONY : src/vboindexer.o
-
-# target to build an object file
-src/vboindexer.cpp.o:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/vboindexer.cpp.o
-.PHONY : src/vboindexer.cpp.o
-
-src/vboindexer.i: src/vboindexer.cpp.i
-
-.PHONY : src/vboindexer.i
-
-# target to preprocess a source file
-src/vboindexer.cpp.i:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/vboindexer.cpp.i
-.PHONY : src/vboindexer.cpp.i
-
-src/vboindexer.s: src/vboindexer.cpp.s
-
-.PHONY : src/vboindexer.s
-
-# target to generate assembly for a file
-src/vboindexer.cpp.s:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/vboindexer.cpp.s
-.PHONY : src/vboindexer.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -429,39 +429,39 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... openglexample"
 	@echo "... edit_cache"
+	@echo "... src/Controls.o"
+	@echo "... src/Controls.i"
+	@echo "... src/Controls.s"
 	@echo "... src/Debug.o"
 	@echo "... src/Debug.i"
 	@echo "... src/Debug.s"
 	@echo "... src/Object3D.o"
 	@echo "... src/Object3D.i"
 	@echo "... src/Object3D.s"
+	@echo "... src/Objloader.o"
+	@echo "... src/Objloader.i"
+	@echo "... src/Objloader.s"
 	@echo "... src/OpenHmdWrapper.o"
 	@echo "... src/OpenHmdWrapper.i"
 	@echo "... src/OpenHmdWrapper.s"
 	@echo "... src/Scene.o"
 	@echo "... src/Scene.i"
 	@echo "... src/Scene.s"
+	@echo "... src/Shader.o"
+	@echo "... src/Shader.i"
+	@echo "... src/Shader.s"
 	@echo "... src/Side.o"
 	@echo "... src/Side.i"
 	@echo "... src/Side.s"
-	@echo "... src/controls.o"
-	@echo "... src/controls.i"
-	@echo "... src/controls.s"
+	@echo "... src/Texture.o"
+	@echo "... src/Texture.i"
+	@echo "... src/Texture.s"
+	@echo "... src/Vboindexer.o"
+	@echo "... src/Vboindexer.i"
+	@echo "... src/Vboindexer.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/objloader.o"
-	@echo "... src/objloader.i"
-	@echo "... src/objloader.s"
-	@echo "... src/shader.o"
-	@echo "... src/shader.i"
-	@echo "... src/shader.s"
-	@echo "... src/texture.o"
-	@echo "... src/texture.i"
-	@echo "... src/texture.s"
-	@echo "... src/vboindexer.o"
-	@echo "... src/vboindexer.i"
-	@echo "... src/vboindexer.s"
 .PHONY : help
 
 
