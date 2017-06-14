@@ -12,7 +12,6 @@ public:
   //! Default constructor
   Scene(OpenHmdWrapper& ophmd);
 
-
   //! Destructor
   virtual ~Scene() noexcept;
 

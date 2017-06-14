@@ -4,16 +4,17 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
 #include "shader.hpp"
-#include "Object3D.hpp"
+#include "Object.hpp"
 #include "controls.hpp"
 #include "Scene.hpp"
+#include "Debug.hpp"
 
-#define GLOB_WIDTH 1000
-#define GLOB_HEIGHT 1000
+
+
+
 GLFWwindow* window;
-
-
 int createGLFWContext(OpenHmdWrapper& hmd)
 {
   // Initialise GLFW
@@ -51,7 +52,7 @@ int createGLFWContext(OpenHmdWrapper& hmd)
 
   // Set the mouse at the center of the screen
   glfwPollEvents();
-  glfwSetCursorPos(window, GLOB_WIDTH/2, GLOB_HEIGHT/2);
+  glfwSetCursorPos(window, hmd.get_hmd_w()/2, hmd.get_hmd_h()/2);
 
 }
 
@@ -92,42 +93,6 @@ int create_opengl()
 
 }
 
-int update(std::vector<Object3D*>& a)
-{
-  for(auto& one_obj : a)
-    {
-      double t = 0.1;
-      one_obj->update(t);
-    }
-}
-
-int draw(std::vector<Object3D*>& a)
-{
-
-  glBindFramebuffer(GL_FRAMEBUFFER,0);
-  do{
-
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glClearColor(0.1, 0.0, 0.0, 1.0);
-
-    int i = 0;
-
-    computeMatricesFromInputs();
-
-    for(auto& one_obj : a ){
-        // std::cout << "draw " <<i++<< "\n";
-        one_obj->draw();
-      }
-
-		// Swap buffers
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-    std::cout <<"lapin"  << "\n";
-  }while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
-         glfwWindowShouldClose(window) == 0 );
-}
-
-
 int main(int argc, char *argv[])
 {
   OpenHmdWrapper hmd= OpenHmdWrapper();
@@ -164,8 +129,8 @@ int main(int argc, char *argv[])
   //                                 "shader/StandardShading.vertexshader",
   //                                 "shader/StandardShading.fragmentshader"));
 
-  //  update(objs);
-  //  draw(sce.objects);
+  update_debug(sce.objects);
+  draw_debug(sce.objects);
 
   sce.window = window;
 

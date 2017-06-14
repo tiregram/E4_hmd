@@ -123,6 +123,33 @@ openglexample/fast:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/build
 .PHONY : openglexample/fast
 
+src/Debug.o: src/Debug.cpp.o
+
+.PHONY : src/Debug.o
+
+# target to build an object file
+src/Debug.cpp.o:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Debug.cpp.o
+.PHONY : src/Debug.cpp.o
+
+src/Debug.i: src/Debug.cpp.i
+
+.PHONY : src/Debug.i
+
+# target to preprocess a source file
+src/Debug.cpp.i:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Debug.cpp.i
+.PHONY : src/Debug.cpp.i
+
+src/Debug.s: src/Debug.cpp.s
+
+.PHONY : src/Debug.s
+
+# target to generate assembly for a file
+src/Debug.cpp.s:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Debug.cpp.s
+.PHONY : src/Debug.cpp.s
+
 src/Object3D.o: src/Object3D.cpp.o
 
 .PHONY : src/Object3D.o
@@ -402,6 +429,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... openglexample"
 	@echo "... edit_cache"
+	@echo "... src/Debug.o"
+	@echo "... src/Debug.i"
+	@echo "... src/Debug.s"
 	@echo "... src/Object3D.o"
 	@echo "... src/Object3D.i"
 	@echo "... src/Object3D.s"
