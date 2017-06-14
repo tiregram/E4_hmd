@@ -2,11 +2,11 @@
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>
-
+#include "Object.hpp"
 
 #include <vector>
 
-class Object3D
+class Object3D : public Object
 {
 public:
   //! Default constructor

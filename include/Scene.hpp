@@ -26,7 +26,7 @@ public:
   bool  update() ;
 
   GLFWwindow* window;
-  std::vector<Object3D*> objects;
+  std::vector<Object*> objects;
 protected:
   OpenHmdWrapper& hmd;
   Side left;
