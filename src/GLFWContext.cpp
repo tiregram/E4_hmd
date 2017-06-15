@@ -64,8 +64,8 @@ void GLFWContext::computeMatricesFromInputs(){
 	glfwSetCursorPos(this->window, 1920/2, 1080/2);
 
 	// Compute new orientation
-	this->horizontalAngle += this->mouseSpeed * float(1920/2 - xpos );
-	this->verticalAngle   += this->mouseSpeed * float( 1080/2 - ypos );
+	// this->horizontalAngle += this->mouseSpeed * float(1920/2 - xpos );
+	// this->verticalAngle   += this->mouseSpeed * float( 1080/2 - ypos );
 
 	// Direction : Spherical coordinates to Cartesian coordinates conversion
 	glm::vec3 direction(

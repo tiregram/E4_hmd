@@ -15,7 +15,8 @@
 //#define OVERSAMPLE_SCALE 2.0
 
 Scene::Scene(OpenHmdWrapper& ophmd,GLFWContext& glfw_context):left(LEFT,ophmd,*this),right(RIGHT,ophmd,*this),hmd(ophmd),glfw_context(glfw_context) {
-
+  this->left.setVPmatrix(&viewMatrix,&projectionMatrix);
+  this->right.setVPmatrix(&viewMatrix,&projectionMatrix);
 }
 
 
@@ -40,6 +41,7 @@ void  Scene::draw()
   viewMatrix =   glfw_context.getViewMatrix();
 
   this->left.drawSceneInEye();
+
   this->right.drawSceneInEye();
 
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -47,8 +49,8 @@ void  Scene::draw()
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(0.0, 0.2, 0.0, 1.0);
 
-  this->right.drawEyeInGlobal();
-  this->left.drawEyeInGlobal();
+  this->right.draw();
+  this->left.draw();
 
   // // Clean up state.
   glBindTexture(GL_TEXTURE_2D, 0);

@@ -1,6 +1,10 @@
 #pragma once
 #include <openhmd/openhmd.h>
 #include <GL/glew.h>
+#include <glm/glm.hpp>
+#include "Side.hpp"
+
+
 class OpenHmdWrapper
 {
 public:
@@ -44,6 +48,10 @@ public:
     this->eye_w = eye_w;
   }
 
+
+  void getViewMatrix(SIDE s, glm::mat4& view);
+  void getProjMatrix(SIDE s, glm::mat4& view);
+
   //! Default constructor
   OpenHmdWrapper();
 
@@ -61,7 +69,6 @@ public:
 
   //! Move assignment operator
   OpenHmdWrapper& operator=(OpenHmdWrapper &&other) noexcept;
-
 
   void  createShader();
   void  bindShader();

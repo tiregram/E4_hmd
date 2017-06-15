@@ -1,4 +1,5 @@
 #include <Side.hpp>
+
 #include <vector>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -50,9 +51,19 @@ Side::Side(SIDE side, OpenHmdWrapper& ophmd,Scene& sce):s(side),hmd(ophmd),sce(s
 	create_fbo();
 }
 
+void Side::update(double t) {
+
+}
+
+void Side::setVPmatrix(glm::mat4* v, glm::mat4* p) {
+  this->projectionMatrix = p;
+  this->viewMatrix = v;
+}
+
 
 
 void Side::create_fbo() {
+  
   glGenFramebuffers(1, &fbo);
   glBindFramebuffer(GL_FRAMEBUFFER, fbo);
 
@@ -76,7 +87,7 @@ void Side::create_fbo() {
 
 }
 
-void Side::drawEyeInGlobal() {
+void Side::draw() {
 
   glUseProgram(this->hmd.get_shaderHMD());
   glEnableVertexAttribArray(0);
@@ -104,7 +115,16 @@ void Side::drawEyeInGlobal() {
 
 }
 
+
 void Side::drawSceneInEye() {
+
+  glm::mat4 save = *this->viewMatrix;
+
+  glm::mat4 mat;
+  hmd.getViewMatrix(s,mat);
+
+  *this->viewMatrix *= mat;
+
 
   glEnable(GL_BLEND);
   glEnable(GL_DEPTH_TEST);
@@ -114,17 +134,21 @@ void Side::drawSceneInEye() {
   glViewport(0,0,this->hmd.get_eye_w(),this->hmd.get_eye_h());
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  if(s)
-    glClearColor(0.3, 0.0, 0.0, 1.0);
-  else
-    glClearColor(0.0, 0.0, 0.3, 1.0);
+  // if(s)
+  //   glClearColor(0.3, 0.0, 0.0, 1.0);
+  // else
+  //   glClearColor(0.3, 0.0, 0.0, 1.0);
 
   for(auto& one_obj : sce.objects){
     one_obj->draw();
   }
 
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+  *this->viewMatrix= save;
+
 }
+
 
 //! Destructor
 Side::~Side() noexcept{}

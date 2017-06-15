@@ -37,10 +37,7 @@ TextureStreamSurface::TextureStreamSurface(glm::mat4 m, GLuint width, GLuint hei
   //  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, IMAGE_WIDTH, IMAGE_HEIGHT, 0, PIXEL_FORMAT, GL_UNSIGNED_BYTE, (GLvoid*)imageData);
 
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB8, widthPBO,heightPBO, 0, GL_BGRA, GL_UNSIGNED_BYTE, (GLvoid*)imageData);
-  glBindTexture(GL_TEXTURE_2D, 0);	
-  
-
-
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   std::cout << "PBO : Preparing to load Shaders\n";	
   // Partie Shader

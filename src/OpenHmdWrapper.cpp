@@ -1,7 +1,10 @@
 
 #include "OpenHmdWrapper.hpp"
+
 #include <iostream>
 #include "Shader.hpp"
+
+
 
 OpenHmdWrapper::OpenHmdWrapper() {
 
@@ -20,6 +23,7 @@ OpenHmdWrapper::OpenHmdWrapper() {
 	ohmd_device_geti(hmd, OHMD_SCREEN_HORIZONTAL_RESOLUTION, &hmd_w);
 	ohmd_device_geti(hmd, OHMD_SCREEN_VERTICAL_RESOLUTION, &hmd_h);
 
+ 
 	ohmd_device_getf(hmd, OHMD_EYE_IPD, &ipd);
 
 	//viewport is half the screen
@@ -53,6 +57,23 @@ OpenHmdWrapper::OpenHmdWrapper() {
 
 }
 
+void OpenHmdWrapper::getViewMatrix(SIDE s, glm::mat4& view) {
+
+  if(s == LEFT)
+    ohmd_device_getf(hmd, OHMD_LEFT_EYE_GL_MODELVIEW_MATRIX, &view[0][0]);
+  else if(s == RIGHT)
+    ohmd_device_getf(hmd, OHMD_RIGHT_EYE_GL_MODELVIEW_MATRIX, &view[0][0]);
+
+}
+
+void OpenHmdWrapper::getProjMatrix(SIDE s, glm::mat4& view) {
+
+  if(s == LEFT)
+    ohmd_device_getf(hmd, OHMD_LEFT_EYE_GL_PROJECTION_MATRIX, &view[0][0]);
+  else if(s == RIGHT)
+    ohmd_device_getf(hmd, OHMD_RIGHT_EYE_GL_PROJECTION_MATRIX, &view[0][0]);
+
+}
 
 
 OpenHmdWrapper::OpenHmdWrapper(const OpenHmdWrapper& other) {
