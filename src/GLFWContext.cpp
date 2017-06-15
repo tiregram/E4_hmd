@@ -7,7 +7,7 @@ using namespace glm;
 GLFWContext::GLFWContext(const unsigned int w, const unsigned int h)
 {
 
-	// Initialise GLFW
+  // Initialise GLFW
   if( !glfwInit() )
     {
       	std::cerr<< "Failed to initialize GLFW"<<"\n";
@@ -45,20 +45,6 @@ GLFWContext::GLFWContext(const unsigned int w, const unsigned int h)
   glfwSetCursorPos(this->window, w/2, h/2);
 
 }
-
-GLFWwindow* GLFWContext::getWindow()
-{
-	return this->window;
-}
-
-
-glm::mat4 GLFWContext::getViewMatrix(){
-	return this->ViewMatrix;
-}
-glm::mat4 GLFWContext::getProjectionMatrix(){
-	return this->ProjectionMatrix;
-}
-
 
 void GLFWContext::computeMatricesFromInputs(){
 
@@ -128,4 +114,31 @@ void GLFWContext::computeMatricesFromInputs(){
 
 	// For the next frame, the "last time" will be "now"
 	lastTime = currentTime;
+}
+
+GLFWwindow* GLFWContext::getWindow()
+{
+	return this->window;
+}
+
+glm::mat4 GLFWContext::getViewMatrix()
+{
+	return this->ViewMatrix;
+}
+
+glm::mat4 GLFWContext::getProjectionMatrix()
+{
+	return this->ProjectionMatrix;
+}
+
+void GLFWContext::swapBuffers()
+{
+	// Swap buffers
+  glfwSwapBuffers(this->window);
+  glfwPollEvents();
+}
+
+bool GLFWContext::getKey()
+{
+	return glfwGetKey(this->window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(this->window) == 0 ;
 }

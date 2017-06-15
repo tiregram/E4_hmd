@@ -12,16 +12,18 @@ class GLFWContext
 public:
 
   GLFWContext(const unsigned int w, const unsigned int h);
-  GLFWwindow* getWindow();
+
 
   void computeMatricesFromInputs();
+  void swapBuffers();
+  bool getKey();
   glm::mat4 getViewMatrix();
   glm::mat4 getProjectionMatrix();
-
+  GLFWwindow* getWindow();
 
 private:
 
-	GLFWwindow* window;
+  GLFWwindow* window;
   glm::mat4 ViewMatrix;
   glm::mat4 ProjectionMatrix;
 
