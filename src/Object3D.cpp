@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
-#include "Controls.hpp"
+
 #include "Objloader.hpp"
 #include "Vboindexer.hpp"
 #include "Texture.hpp"
@@ -42,7 +42,6 @@ void Object3D::update(double delta_time) {
 }
 
 void Object3D::draw() {
-
 
   glUseProgram(programID);
 

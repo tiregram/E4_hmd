@@ -1,60 +1,19 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+
 #include "Shader.hpp"
 #include "Object.hpp"
-#include "Controls.hpp"
 #include "Scene.hpp"
 #include "Debug.hpp"
 
 
-
-
-GLFWwindow* window;
-int createGLFWContext(OpenHmdWrapper& hmd)
-{
-  // Initialise GLFW
-  if( !glfwInit() )
-    {
-      std::cerr<< "Failed to initialize GLFW"<<"\n";
-      return -1;
-    }
-
-  glfwWindowHint(GLFW_SAMPLES, 4);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-
-  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-  window = glfwCreateWindow( hmd.get_hmd_w(), hmd.get_hmd_h(), "one", NULL, NULL);
-
-  if( window == NULL ){
-    std::cerr<< "Failed to open GLFW window. "
-             << "If you have an Intel GPU, they are not 3.3 compatible."
-             <<" Try the 2.1 version of the tutorials."<<"\n";
-    getchar();
-    glfwTerminate();
-    return -1;
-  }
-
-  glfwMakeContextCurrent(window);
-
-  // Ensure we can capture the escape key being pressed below
-	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-
-  // Hide the mouse and enable unlimited mouvement
-  glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-  // Set the mouse at the center of the screen
-  glfwPollEvents();
-  glfwSetCursorPos(window, hmd.get_hmd_w()/2, hmd.get_hmd_h()/2);
-
-}
+#include "GLFWContext.hpp"
 
 
 int createGLEW()
@@ -69,7 +28,7 @@ int createGLEW()
 
 	printf("OpenGL Renderer: %s\n", glGetString(GL_RENDERER));
 	printf("OpenGL Vendor: %s\n", glGetString(GL_VENDOR));
-	printf("OpenGL Version: %s\n", glGetString(GL_VERSION)); 
+	printf("OpenGL Version: %s\n", glGetString(GL_VERSION));
 
 }
 
@@ -93,19 +52,20 @@ int create_opengl()
 
 }
 
+
 int main(int argc, char *argv[])
 {
   OpenHmdWrapper hmd= OpenHmdWrapper();
 
-  createGLFWContext(hmd);
+  GLFWContext glfw_context = GLFWContext(hmd.get_hmd_w(),hmd.get_hmd_h());
+
   createGLEW();
   create_opengl();
 
   hmd.createShader();
 
-  Scene sce(hmd);
+  Scene sce(hmd,glfw_context);
 
-  //std::vector<Object3D*> objs;
   glm::mat4 d(1.0);
   glm::mat4 x=glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
 
@@ -136,10 +96,9 @@ int main(int argc, char *argv[])
                                   "shader/StandardShading.vertexshader",
                                   "shader/StandardShading.fragmentshader"));
 
-  // update_debug(sce.objects);
-  // draw_debug(sce.objects);
 
-  sce.window = window;
+  // update_debug(glfw_context,sce.objects);
+  // draw_debug(sce.objects);
 
   while(sce.update())
     sce.draw();

@@ -7,19 +7,22 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "Scene.hpp"
+
 #include "Shader.hpp"
-#include "Controls.hpp"
+
+
+
+//#define OVERSAMPLE_SCALE 2.0
+
+Scene::Scene(OpenHmdWrapper& ophmd,GLFWContext& glfw_context):left(LEFT,ophmd,*this),right(RIGHT,ophmd,*this),hmd(ophmd),glfw_context(glfw_context) {
+
+}
 
 
 
 void Scene::addObject(Object* obj) {
   obj->setVPmatrix(&this->viewMatrix,&this->projectionMatrix);
   this->objects.push_back(obj);
-}
-
-
-Scene::Scene(OpenHmdWrapper& ophmd):left(LEFT,ophmd,*this),right(RIGHT,ophmd,*this),hmd(ophmd) {
-
 }
 
 
@@ -31,14 +34,13 @@ Scene::~Scene() noexcept
 
 void  Scene::draw()
 {
-  projectionMatrix = getProjectionMatrix();
-  viewMatrix = getViewMatrix();
+  glfw_context.computeMatricesFromInputs();
 
-  computeMatricesFromInputs();
+  projectionMatrix =   glfw_context.getProjectionMatrix();
+  viewMatrix =   glfw_context.getViewMatrix();
 
   this->left.drawSceneInEye();
   this->right.drawSceneInEye();
-
 
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
   glViewport(0,0,this->hmd.get_hmd_w(),this->hmd.get_eye_h());
@@ -49,13 +51,11 @@ void  Scene::draw()
   this->left.drawEyeInGlobal();
 
   // // Clean up state.
-  // glBindTexture(GL_TEXTURE_2D, 0);
-  // glDisable(GL_TEXTURE_2D);
-  // glUseProgram(0);
+  glBindTexture(GL_TEXTURE_2D, 0);
+  glDisable(GL_TEXTURE_2D);
+  glUseProgram(0);
+  glfw_context.swapBuffers();
 
-  // // Swap buffers
-  glfwSwapBuffers(window);
-  glfwPollEvents();
 }
 
 bool
@@ -67,5 +67,6 @@ Scene::update()
     one_obj->update(t);
   }
 
-  return  glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0 ;
+  //return  glfwGetKey(this->glfw_context.getWindow(), GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(this->glfw_context.getWindow()) == 0 ;
+  return glfw_context.getKey();
 }

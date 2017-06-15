@@ -123,33 +123,6 @@ openglexample/fast:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/build
 .PHONY : openglexample/fast
 
-src/Controls.o: src/Controls.cpp.o
-
-.PHONY : src/Controls.o
-
-# target to build an object file
-src/Controls.cpp.o:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Controls.cpp.o
-.PHONY : src/Controls.cpp.o
-
-src/Controls.i: src/Controls.cpp.i
-
-.PHONY : src/Controls.i
-
-# target to preprocess a source file
-src/Controls.cpp.i:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Controls.cpp.i
-.PHONY : src/Controls.cpp.i
-
-src/Controls.s: src/Controls.cpp.s
-
-.PHONY : src/Controls.s
-
-# target to generate assembly for a file
-src/Controls.cpp.s:
-	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Controls.cpp.s
-.PHONY : src/Controls.cpp.s
-
 src/Debug.o: src/Debug.cpp.o
 
 .PHONY : src/Debug.o
@@ -176,6 +149,33 @@ src/Debug.s: src/Debug.cpp.s
 src/Debug.cpp.s:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Debug.cpp.s
 .PHONY : src/Debug.cpp.s
+
+src/GLFWContext.o: src/GLFWContext.cpp.o
+
+.PHONY : src/GLFWContext.o
+
+# target to build an object file
+src/GLFWContext.cpp.o:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/GLFWContext.cpp.o
+.PHONY : src/GLFWContext.cpp.o
+
+src/GLFWContext.i: src/GLFWContext.cpp.i
+
+.PHONY : src/GLFWContext.i
+
+# target to preprocess a source file
+src/GLFWContext.cpp.i:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/GLFWContext.cpp.i
+.PHONY : src/GLFWContext.cpp.i
+
+src/GLFWContext.s: src/GLFWContext.cpp.s
+
+.PHONY : src/GLFWContext.s
+
+# target to generate assembly for a file
+src/GLFWContext.cpp.s:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/GLFWContext.cpp.s
+.PHONY : src/GLFWContext.cpp.s
 
 src/Object3D.o: src/Object3D.cpp.o
 
@@ -429,12 +429,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... openglexample"
 	@echo "... edit_cache"
-	@echo "... src/Controls.o"
-	@echo "... src/Controls.i"
-	@echo "... src/Controls.s"
 	@echo "... src/Debug.o"
 	@echo "... src/Debug.i"
 	@echo "... src/Debug.s"
+	@echo "... src/GLFWContext.o"
+	@echo "... src/GLFWContext.i"
+	@echo "... src/GLFWContext.s"
 	@echo "... src/Object3D.o"
 	@echo "... src/Object3D.i"
 	@echo "... src/Object3D.s"

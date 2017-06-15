@@ -1,12 +1,11 @@
 #include "Debug.hpp"
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+
+
 
 #include <glm/glm.hpp>
-#include "Controls.hpp"
-extern GLFWwindow* window;
 
-int draw_debug(std::vector<Object*>& a)
+
+int draw_debug(GLFWContext& glfw_context,std::vector<Object*>& a)
 {
 
   glBindFramebuffer(GL_FRAMEBUFFER,0);
@@ -17,18 +16,16 @@ int draw_debug(std::vector<Object*>& a)
 
     int i = 0;
 
-    computeMatricesFromInputs();
+    glfw_context.computeMatricesFromInputs();
 
     for(auto& one_obj : a ){
       // std::cout << "draw " <<i++<< "\n";
       one_obj->draw();
     }
 
-		// Swap buffers
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-  }while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
-          glfwWindowShouldClose(window) == 0 );
+  glfw_context.swapBuffers();
+
+  }while(glfw_context.getKey());
 
 }
 
