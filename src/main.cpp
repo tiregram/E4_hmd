@@ -109,28 +109,35 @@ int main(int argc, char *argv[])
   glm::mat4 d(1.0);
   glm::mat4 x=glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
 
-  sce.objects.push_back(new Object3D(x,
-                                  "obj/untitled.obj",
+  sce.addObject(new Object3D(x,
+                                     "obj/untitled.obj",
+                                     "obj/uvmap.DDS",
+                                     "shader/StandardShading.vertexshader",
+                                     "shader/StandardShading.fragmentshader"));
+
+  glm::mat4 xx=glm::translate(d,glm::vec3(-3.0f, 0.0f, -5.0f));
+  sce.addObject(new Object3D(xx,
+                                     "obj/untitled.obj",
+                                     "obj/uvmap.DDS",
+                                     "shader/StandardShading.vertexshader",
+                                     "shader/StandardShading.fragmentshader"));
+
+  glm::mat4 y=  glm::translate(d,glm::vec3(2.0f, 0.0f, 0.0f));
+  sce.addObject(new Object3D(y,
+                                  "obj/suzanne.obj",
                                   "obj/uvmap.DDS",
                                   "shader/StandardShading.vertexshader",
                                   "shader/StandardShading.fragmentshader"));
 
-  // glm::mat4 y=  glm::translate(d,glm::vec3(2.0f, 0.0f, 0.0f));
-  // sce.objects.push_back(new Object3D(y,
-  //                                 "obj/suzanne.obj",
-  //                                 "obj/uvmap.DDS",
-  //                                 "shader/StandardShading.vertexshader",
-  //                                 "shader/StandardShading.fragmentshader"));
+  glm::mat4 z=  glm::translate(d,glm::vec3(-2.0f, 0.0f, 0.0f));
+  sce.addObject(new Object3D(z,
+                                  "obj/suzanne.obj",
+                                  "obj/uvmap.DDS",
+                                  "shader/StandardShading.vertexshader",
+                                  "shader/StandardShading.fragmentshader"));
 
-  // glm::mat4 z=  glm::translate(d,glm::vec3(-2.0f, 0.0f, 0.0f));
-  // sce.objects.push_back(new Object3D(z,
-  //                                 "obj/suzanne.obj",
-  //                                 "obj/uvmap.DDS",
-  //                                 "shader/StandardShading.vertexshader",
-  //                                 "shader/StandardShading.fragmentshader"));
-
-  update_debug(sce.objects);
-  draw_debug(sce.objects);
+  // update_debug(sce.objects);
+  // draw_debug(sce.objects);
 
   sce.window = window;
 

@@ -24,10 +24,16 @@ public:
   void  draw();
   bool  update() ;
 
+  void addObject(Object* obj);
   GLFWwindow* window;
   std::vector<Object*> objects;
 protected:
   OpenHmdWrapper& hmd;
   Side left;
   Side right;
+
+  glm::mat4 projectionMatrix ;
+
+  glm::mat4 viewMatrix;
+
 };

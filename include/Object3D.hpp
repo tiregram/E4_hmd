@@ -29,13 +29,13 @@ public:
 
   void createOpengl(const char * vert_shader_file,const char * frag_shader_file,const char * texture_file);
 
-
   //! Copy assignment operator
   Object3D& operator=(const Object3D &other);
 
   //! Move assignment operator
   Object3D& operator=(Object3D &&other) noexcept{};
 
+  virtual void setVPmatrix(glm::mat4* v, glm::mat4* p);
 
   virtual void update(double delta_time);
   virtual void draw();
@@ -70,9 +70,11 @@ public:
 	std::vector<glm::vec2> indexed_uvs;
 	std::vector<glm::vec3> indexed_normals;
 
-  glm::mat4 projectionMatrix ;
+  glm::mat4* projectionMatrix ;
+  glm::mat4* viewMatrix;
   glm::mat4 modelMatrix;
-  glm::mat4 viewMatrix;
+
+
 
 protected:
 private:

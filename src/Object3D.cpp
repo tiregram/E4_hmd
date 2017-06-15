@@ -21,6 +21,11 @@ Object3D::Object3D(glm::mat4 m,
   this->createOpengl(vert_shader_file, frag_shader_fil, texture_file);
 }
 
+void Object3D::setVPmatrix(glm::mat4* v, glm::mat4* p) {
+  this->viewMatrix= v;
+  this->projectionMatrix=p;
+}
+
 
 Object3D::Object3D(const Object3D& other){
   std::cout <<"Object create b"  << "\n";
@@ -38,17 +43,15 @@ void Object3D::update(double delta_time) {
 
 void Object3D::draw() {
 
-  projectionMatrix = getProjectionMatrix();
-  viewMatrix = getViewMatrix();
 
   glUseProgram(programID);
 
   glm::vec3 lightPos = glm::vec3(4,4,4);
-  glm::mat4 MVP = this->projectionMatrix * this->viewMatrix * this->modelMatrix;
+  glm::mat4 MVP = *this->projectionMatrix * *this->viewMatrix * this->modelMatrix;
 
 
   glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
-  glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &viewMatrix[0][0]);
+  glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &(*viewMatrix)[0][0]);
 
   glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 

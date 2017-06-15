@@ -1,4 +1,5 @@
 #include <openhmd/openhmd.h>
+
 #include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -9,7 +10,13 @@
 #include "Shader.hpp"
 #include "Controls.hpp"
 
-//#define OVERSAMPLE_SCALE 2.0
+
+
+void Scene::addObject(Object* obj) {
+  obj->setVPmatrix(&this->viewMatrix,&this->projectionMatrix);
+  this->objects.push_back(obj);
+}
+
 
 Scene::Scene(OpenHmdWrapper& ophmd):left(LEFT,ophmd,*this),right(RIGHT,ophmd,*this),hmd(ophmd) {
 
@@ -24,6 +31,9 @@ Scene::~Scene() noexcept
 
 void  Scene::draw()
 {
+  projectionMatrix = getProjectionMatrix();
+  viewMatrix = getViewMatrix();
+
   computeMatricesFromInputs();
 
   this->left.drawSceneInEye();
