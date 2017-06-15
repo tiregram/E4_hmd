@@ -7,11 +7,11 @@
 
 #include "Scene.hpp"
 #include "shader.hpp"
-#include "controls.hpp"
+
 
 //#define OVERSAMPLE_SCALE 2.0
 
-Scene::Scene() {
+Scene::Scene(GLFWContext& glfw_context):glfw_context(glfw_context) {
 
 	ctx = ohmd_ctx_create();
 	int num_devices = ohmd_ctx_probe(ctx);
@@ -132,7 +132,7 @@ Scene::Scene() {
 	create_fbo(eye_w, eye_h, &left_fbo, &left_color_tex, &left_depth_tex);
 	create_fbo(eye_w, eye_h, &right_fbo, &right_color_tex, &right_depth_tex);
 }
-
+/*
 Scene::Scene(const Scene& other) {
 
 }
@@ -153,7 +153,7 @@ Scene& Scene::operator=(Scene &&other) noexcept
 {
 
 }
-
+*/
 //! Destructor
 Scene::~Scene() noexcept
 {
@@ -162,8 +162,8 @@ Scene::~Scene() noexcept
 
 void  Scene::draw()
 {
-  computeMatricesFromInputs();
-
+  //computeMatricesFromInputs();
+	glfw_context.computeMatricesFromInputs();
   // left eyes //////////////////////////////////////////////////////////////
   // Common scene state
   glEnable(GL_BLEND);
@@ -181,7 +181,7 @@ void  Scene::draw()
   glClearColor(0.3, 0.0, 0.0, 1.0);
 
   for(auto& one_obj : objects){
-    one_obj->draw();
+    one_obj->draw(this->glfw_context.getViewMatrix(), this->glfw_context.getProjectionMatrix());
   }
 
   // right eyes //////////////////////////////////////////////////////////////
@@ -198,7 +198,7 @@ void  Scene::draw()
   glClearColor(0.0, 0.0, 0.3, 1.0);
 
   for(auto& one_obj : objects){
-    one_obj->draw();
+    one_obj->draw(this->glfw_context.getViewMatrix(), this->glfw_context.getProjectionMatrix());
   }
 
   // both ///////////////////////////////////////////////////////////////////
@@ -223,7 +223,7 @@ void  Scene::draw()
 
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, left_color_tex);
-  
+
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,buf_elem_panel_l);
 
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (void*)0);
@@ -303,7 +303,7 @@ void  Scene::draw()
   glUseProgram(0);
 
   // Swap buffers
-  glfwSwapBuffers(window);
+  glfwSwapBuffers(this->glfw_context.getWindow());
   glfwPollEvents();
 
 }
@@ -317,7 +317,7 @@ Scene::update()
     one_obj->update(t);
   }
 
-  return  glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0 ;
+  return  glfwGetKey(this->glfw_context.getWindow(), GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(this->glfw_context.getWindow()) == 0 ;
 }
 
 

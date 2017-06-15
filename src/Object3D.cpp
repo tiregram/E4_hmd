@@ -5,7 +5,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
-#include "controls.hpp"
 #include "objloader.hpp"
 #include "vboindexer.hpp"
 #include "texture.hpp"
@@ -36,8 +35,8 @@ void Object3D::update(double delta_time) {
 
 }
 
-void Object3D::draw() {
-  // std::cout 
+void Object3D::draw(glm::mat4 view_matrix, glm::mat4  projection_matrix) {
+  // std::cout
   //   << programID<< ","
   //   << vertexBufferID<< ","
   //   << uvBufferID<< ","
@@ -49,8 +48,9 @@ void Object3D::draw() {
   //   << ViewMatrixID << ","
   //   <<indices.size()  << "\n";
 
-  projectionMatrix = getProjectionMatrix();
-  viewMatrix = getViewMatrix();
+  projectionMatrix = projection_matrix;
+  viewMatrix = view_matrix;
+
 
   glUseProgram(programID);
 

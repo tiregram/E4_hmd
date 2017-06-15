@@ -1,14 +1,14 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "shader.hpp"
 #include "Object3D.hpp"
-#include "controls.hpp"
 #include "Scene.hpp"
-#include "GLFWContext.cpp"
+#include "GLFWContext.hpp"
 
 
 int createGLEW()
@@ -23,7 +23,7 @@ int createGLEW()
 
 	printf("OpenGL Renderer: %s\n", glGetString(GL_RENDERER));
 	printf("OpenGL Vendor: %s\n", glGetString(GL_VENDOR));
-	printf("OpenGL Version: %s\n", glGetString(GL_VERSION)); 
+	printf("OpenGL Version: %s\n", glGetString(GL_VERSION));
 
 }
 
@@ -51,14 +51,13 @@ int create_opengl()
 int main(int argc, char *argv[])
 {
 
-  GLFWContext glfw_context(1000,1000);
+  GLFWContext glfw_context = GLFWContext(1000,1000);
 
-  //createGLFWContext();
+
   createGLEW();
   create_opengl();
 
-  Scene sce;
-  //std::vector<Object3D*> objs;
+  Scene sce = Scene(glfw_context);
   glm::mat4 d(1.0);
   glm::mat4 x=glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
 
@@ -81,12 +80,6 @@ int main(int argc, char *argv[])
                                   "obj/uvmap.DDS",
                                   "shader/StandardShading.vertexshader",
                                   "shader/StandardShading.fragmentshader"));
-
-  // update(objs);
-  //  draw(sce.objects);
-
-  //sce.window = window;
-  sce.window = glfw_context.getWindow();
 
   while(sce.update())
     sce.draw();

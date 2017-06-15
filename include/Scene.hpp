@@ -4,35 +4,35 @@
 #include <GLFW/glfw3.h>
 #include "Object3D.hpp"
 #include <openhmd/openhmd.h>
+#include "GLFWContext.hpp"
 
 class Scene
 {
 public:
   //! Default constructor
-  Scene();
-
+  Scene(GLFWContext& glfw_context);
+/*
   //! Copy constructor
   Scene(const Scene &other);
 
   //! Move constructor
   Scene(Scene &&other) noexcept;
-
+*/
   //! Destructor
   virtual ~Scene() noexcept;
-
+/*
   //! Copy assignment operator
   Scene& operator=(const Scene &other);
 
   //! Move assignment operator
   Scene& operator=(Scene &&other) noexcept;
-
+*/
   void create_fbo(int eye_width, int eye_height, GLuint* fbo, GLuint* color_tex, GLuint* depth_tex);
 
   void  draw();
   bool  update() ;
 
 
-  GLFWwindow* window;
   std::vector<Object3D*> objects;
 protected:
   GLuint right_color_tex;
@@ -52,6 +52,7 @@ protected:
 private:
 
   GLuint shaderHMD;
+  GLFWContext &glfw_context;
 
 	int hmd_w;
   int hmd_h;
@@ -75,5 +76,3 @@ private:
 	float right_lens_center[2];
 
 };
-
-

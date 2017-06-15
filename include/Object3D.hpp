@@ -38,7 +38,7 @@ public:
 
 
   virtual void update(double delta_time);
-  virtual void draw();
+  virtual void draw(glm::mat4 view_matrix, glm::mat4 projection_matrix);
 
   /////////////////////////////////////////////////////////////////////////////
   //                                 OGL PART                                //
