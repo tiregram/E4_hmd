@@ -9,9 +9,27 @@
 #include "controls.hpp"
 #include "Scene.hpp"
 
+//pour Debug PBO
+#include "TextureStreamSurface.hpp"
+
+
+#include <sstream>
+#include <iomanip>
+#include <cstdlib>
+#include <cstring>
+
 #define GLOB_WIDTH 1000
 #define GLOB_HEIGHT 1000
+
+#define IMAGE_WIDTH 100
+#define IMAGE_HEIGHT 100
+#define PIXEL_FORMAT GL_BGRA
+#define DATA_SIZE 40000
+
 GLFWwindow* window;
+
+
+
 
 
 int createGLFWContext()
@@ -101,7 +119,7 @@ int update(std::vector<Object3D*>& a)
     }
 }
 
-int draw(std::vector<Object3D*>& a)
+int draw(std::vector<Object3D*>& a, std::vector<TextureStreamSurface*>& b )
 {
 
   do{
@@ -116,13 +134,21 @@ int draw(std::vector<Object3D*>& a)
         // std::cout << "draw " <<i++<< "\n";
         one_obj->draw();
       }
+  	//callBackStephen(textureId, pboId, imageData, shaderId, uvId, elementId, vertId);
 
-		// Swap buffers
+    
+    for(auto& test : b)
+      {
+        test->draw();
+      }
+    // Swap buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 
   }while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
          glfwWindowShouldClose(window) == 0 );
+
+
 }
 
 
@@ -132,12 +158,44 @@ int main(int argc, char *argv[])
   createGLEW();
   create_opengl();
 
-  Scene sce;
-  //std::vector<Object3D*> objs;
+  //Scene sce;
+  std::vector<Object3D*> objs;
   glm::mat4 d(1.0);
-  glm::mat4 x=glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
+  glm::mat4 x=glm::translate(d,glm::vec3(0.0f, 0.0f, -15.0f));
 
-  sce.objects.push_back(new Object3D(x,
+  glm::mat4 xx=glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
+  glm::mat4 xx2=glm::translate(d,glm::vec3(3.0f, 0.0f, -5.0f));
+
+  //
+  GLuint pboId;
+  GLuint shaderId;
+  GLuint vertId;
+  GLuint uvId;
+  GLuint elementId;
+  GLuint textureId;
+
+  GLubyte* imageData = 0;  
+  imageData = new GLubyte[DATA_SIZE];
+  memset(imageData, 0, DATA_SIZE);
+
+  TextureStreamSurface testStephenStream(xx, 200, 200);
+  TextureStreamSurface testStephenStream2(xx2, 200, 200);
+
+  std::vector<TextureStreamSurface*> texturesStephen;
+
+  for(int i=0;i<4;i++)
+    {
+      for(int j =0; j<4;j++)
+        {
+          texturesStephen.push_back(new TextureStreamSurface(glm::translate(d, glm::vec3(3 *i,3 * j,-5.0f))));          
+        }
+    }
+
+
+
+  //initPBO(&shaderId, &pboId, &vertId, &uvId, &elementId, &textureId, imageData);
+
+  objs.push_back(new Object3D(x,
                                   "obj/untitled.obj",
                                   "obj/uvmap.DDS",
                                   "shader/StandardShading.vertexshader",
@@ -158,14 +216,19 @@ int main(int argc, char *argv[])
   //                                 "shader/StandardShading.fragmentshader"));
 
   // update(objs);
-  //  draw(sce.objects);
+  //draw(objs, &textureId, &pboId,imageData, &shaderId, &uvId, &elementId, &vertId);
+  draw(objs, texturesStephen);
 
-  sce.window = window;
 
-  while(sce.update())
-    sce.draw();
+  //sce.window = window;
 
-  for(auto& a : sce.objects )
+
+  //while(sce.update())
+    //sce.draw();
+
+
+
+  for(auto& a : objs )
     {
       delete(a);
     }

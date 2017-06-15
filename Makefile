@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ruhtra/E4_hmd
+CMAKE_SOURCE_DIR = /home/stephen/E4_hmd
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ruhtra/E4_hmd
+CMAKE_BINARY_DIR = /home/stephen/E4_hmd
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruhtra/E4_hmd/CMakeFiles /home/ruhtra/E4_hmd/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stephen/E4_hmd/CMakeFiles /home/stephen/E4_hmd/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruhtra/E4_hmd/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stephen/E4_hmd/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -203,6 +203,33 @@ src/Scene.s: src/Scene.cpp.s
 src/Scene.cpp.s:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Scene.cpp.s
 .PHONY : src/Scene.cpp.s
+
+src/TextureStreamSurface.o: src/TextureStreamSurface.cpp.o
+
+.PHONY : src/TextureStreamSurface.o
+
+# target to build an object file
+src/TextureStreamSurface.cpp.o:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/TextureStreamSurface.cpp.o
+.PHONY : src/TextureStreamSurface.cpp.o
+
+src/TextureStreamSurface.i: src/TextureStreamSurface.cpp.i
+
+.PHONY : src/TextureStreamSurface.i
+
+# target to preprocess a source file
+src/TextureStreamSurface.cpp.i:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/TextureStreamSurface.cpp.i
+.PHONY : src/TextureStreamSurface.cpp.i
+
+src/TextureStreamSurface.s: src/TextureStreamSurface.cpp.s
+
+.PHONY : src/TextureStreamSurface.s
+
+# target to generate assembly for a file
+src/TextureStreamSurface.cpp.s:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/TextureStreamSurface.cpp.s
+.PHONY : src/TextureStreamSurface.cpp.s
 
 src/controls.o: src/controls.cpp.o
 
@@ -384,6 +411,9 @@ help:
 	@echo "... src/Scene.o"
 	@echo "... src/Scene.i"
 	@echo "... src/Scene.s"
+	@echo "... src/TextureStreamSurface.o"
+	@echo "... src/TextureStreamSurface.i"
+	@echo "... src/TextureStreamSurface.s"
 	@echo "... src/controls.o"
 	@echo "... src/controls.i"
 	@echo "... src/controls.s"
