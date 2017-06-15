@@ -366,6 +366,33 @@ src/Texture.cpp.s:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Texture.cpp.s
 .PHONY : src/Texture.cpp.s
 
+src/TextureStreamSurface.o: src/TextureStreamSurface.cpp.o
+
+.PHONY : src/TextureStreamSurface.o
+
+# target to build an object file
+src/TextureStreamSurface.cpp.o:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/TextureStreamSurface.cpp.o
+.PHONY : src/TextureStreamSurface.cpp.o
+
+src/TextureStreamSurface.i: src/TextureStreamSurface.cpp.i
+
+.PHONY : src/TextureStreamSurface.i
+
+# target to preprocess a source file
+src/TextureStreamSurface.cpp.i:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/TextureStreamSurface.cpp.i
+.PHONY : src/TextureStreamSurface.cpp.i
+
+src/TextureStreamSurface.s: src/TextureStreamSurface.cpp.s
+
+.PHONY : src/TextureStreamSurface.s
+
+# target to generate assembly for a file
+src/TextureStreamSurface.cpp.s:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/TextureStreamSurface.cpp.s
+.PHONY : src/TextureStreamSurface.cpp.s
+
 src/Vboindexer.o: src/Vboindexer.cpp.o
 
 .PHONY : src/Vboindexer.o
@@ -456,6 +483,9 @@ help:
 	@echo "... src/Texture.o"
 	@echo "... src/Texture.i"
 	@echo "... src/Texture.s"
+	@echo "... src/TextureStreamSurface.o"
+	@echo "... src/TextureStreamSurface.i"
+	@echo "... src/TextureStreamSurface.s"
 	@echo "... src/Vboindexer.o"
 	@echo "... src/Vboindexer.i"
 	@echo "... src/Vboindexer.s"

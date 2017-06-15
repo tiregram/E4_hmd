@@ -11,7 +11,7 @@
 #include "Object.hpp"
 #include "Scene.hpp"
 #include "Debug.hpp"
-
+#include "TextureStreamSurface.hpp"
 
 #include "GLFWContext.hpp"
 
@@ -53,6 +53,7 @@ int create_opengl()
 }
 
 
+
 int main(int argc, char *argv[])
 {
   OpenHmdWrapper hmd= OpenHmdWrapper();
@@ -67,7 +68,18 @@ int main(int argc, char *argv[])
   Scene sce(hmd,glfw_context);
 
   glm::mat4 d(1.0);
-  glm::mat4 x=glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
+  glm::mat4 x=glm::translate(d,glm::vec3(0.0f, 0.0f, -15.0f));
+
+  glm::mat4 sxx=glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
+  glm::mat4 sxx2=glm::translate(d,glm::vec3(3.0f, 0.0f, -5.0f));
+
+  //
+  GLuint pboId;
+  GLuint shaderId;
+  GLuint vertId;
+  GLuint uvId;
+  GLuint elementId;
+  GLuint textureId;
 
   sce.addObject(new Object3D(x,
                                      "obj/untitled.obj",
@@ -84,18 +96,23 @@ int main(int argc, char *argv[])
 
   glm::mat4 y=  glm::translate(d,glm::vec3(2.0f, 0.0f, 0.0f));
   sce.addObject(new Object3D(y,
-                                  "obj/suzanne.obj",
-                                  "obj/uvmap.DDS",
-                                  "shader/StandardShading.vertexshader",
-                                  "shader/StandardShading.fragmentshader"));
+                             "obj/suzanne.obj",
+                             "obj/uvmap.DDS",
+                             "shader/StandardShading.vertexshader",
+                             "shader/StandardShading.fragmentshader"));
 
+
+  //  auto testStephenStream= new TextureStreamSurface(sxx, 100, 100);
+  auto testStephenStream2= new TextureStreamSurface(sxx2, 100, 100);
+
+  //  sce.addObject(testStephenStream);
+  sce.addObject(testStephenStream2);
   glm::mat4 z=  glm::translate(d,glm::vec3(-2.0f, 0.0f, 0.0f));
   sce.addObject(new Object3D(z,
                                   "obj/suzanne.obj",
                                   "obj/uvmap.DDS",
                                   "shader/StandardShading.vertexshader",
                                   "shader/StandardShading.fragmentshader"));
-
 
   // update_debug(glfw_context,sce.objects);
   // draw_debug(sce.objects);
