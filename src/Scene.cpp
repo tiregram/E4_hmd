@@ -17,6 +17,7 @@
 Scene::Scene(OpenHmdWrapper& ophmd,GLFWContext& glfw_context):left(LEFT,ophmd,*this),right(RIGHT,ophmd,*this),hmd(ophmd),glfw_context(glfw_context) {
   this->left.setVPmatrix(&viewMatrix,&projectionMatrix);
   this->right.setVPmatrix(&viewMatrix,&projectionMatrix);
+
 }
 
 
@@ -37,11 +38,10 @@ void  Scene::draw()
 {
   glfw_context.computeMatricesFromInputs();
 
-  projectionMatrix =   glfw_context.getProjectionMatrix();
+
   viewMatrix =   glfw_context.getViewMatrix();
 
   this->left.drawSceneInEye();
-
   this->right.drawSceneInEye();
 
   glBindFramebuffer(GL_FRAMEBUFFER, 0);

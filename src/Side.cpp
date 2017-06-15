@@ -120,10 +120,11 @@ void Side::drawSceneInEye() {
 
   glm::mat4 save = *this->viewMatrix;
 
-  glm::mat4 mat;
-  hmd.getViewMatrix(s,mat);
-
-  *this->viewMatrix *= mat;
+  glm::mat4 mat_v;
+  glm::mat4 mat_p;
+  hmd.getViewMatrix(s,mat_v);
+  hmd.getProjMatrix(s,*this->projectionMatrix);
+  *this->viewMatrix *= mat_v;
 
 
   glEnable(GL_BLEND);
