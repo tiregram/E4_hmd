@@ -110,7 +110,7 @@ int main(int argc, char *argv[])
   */ 
   //sce.addObject(testStephenStream);
   //sce.addObject(testStephenStream2);
-  glm::mat4 z=  glm::translate(d,glm::vec3(0.0f, 0.0f, 0.0f));
+  /*glm::mat4 z=  glm::translate(d,glm::vec3(0.0f, 0.0f, 0.0f));
   sce.addObject(new Object3D(z,
                                   "obj/suzanne.obj",
                                   "obj/uvmap.DDS",
@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
 
 
 
-
+*/
 
   glm::mat4 yy=  glm::translate(d,glm::vec3(2.0f, 0.0f, 0.0f));
   Object3D* suzanne_one =  new Object3D(yy,
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
                                   "shader/StandardShading.fragmentshader");
 
 
-
+  //glm::rotate(d, glm::vec3(90,0,0));
   glm::mat4 m=  glm::translate(d,glm::vec3(0.0f, 0.0f, 0.0f));
   ObjectContainer * container = new ObjectContainer(m);
   container->add_object(suzanne_one);

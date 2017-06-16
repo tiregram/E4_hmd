@@ -2,9 +2,7 @@
 #include <iostream>
 
 
-
-
-ObjectContainer::ObjectContainer(glm::mat4 m):modelMatrix(m)
+ObjectContainer::ObjectContainer(glm::mat4 m):Object(m)
 {
 
 }
@@ -21,6 +19,7 @@ bool ObjectContainer::remove_object(Object * object_to_remove)
 	{
 	    if( *iter == object_to_remove )
 	    {
+	    	(*iter)->set_father(NULL);
 	        this->objects_contained.erase( iter );
 	        return true;
 	    }
@@ -30,6 +29,7 @@ bool ObjectContainer::remove_object(Object * object_to_remove)
 
 void ObjectContainer::add_object(Object * object_to_add)
 {
+	object_to_add->set_father(this);
 	this->objects_contained.push_back(object_to_add);
 }
 
@@ -51,7 +51,6 @@ void ObjectContainer::setVPmatrix(glm::mat4* v, glm::mat4* p)
 	for(auto o : this->objects_contained)
 		o->setVPmatrix(v, p);
 }
-
 
 	
 

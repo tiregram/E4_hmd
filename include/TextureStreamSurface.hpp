@@ -18,9 +18,6 @@ public:
   //! Copy constructor
   TextureStreamSurface(const TextureStreamSurface &other);
 
-  //! Move constructor
-  TextureStreamSurface(TextureStreamSurface &&other) noexcept{};
-
   //! Destructor
   virtual ~TextureStreamSurface() noexcept{};
 
@@ -41,7 +38,6 @@ public:
 
   virtual void update(double delta_time);
   virtual void draw();
-
   virtual void setVPmatrix(glm::mat4* v, glm::mat4* p);
 
   /////////////////////////////////////////////////////////////////////////////
@@ -79,7 +75,6 @@ public:
 
   glm::mat4* projectionMatrix ;
   glm::mat4* viewMatrix;
-  glm::mat4 modelMatrix;
 
 protected:
 private:

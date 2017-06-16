@@ -14,7 +14,7 @@ Object3D::Object3D(glm::mat4 m,
                    const char * obj_file,
                    const char * texture_file,
                    const char * vert_shader_file,
-                   const char * frag_shader_fil):modelMatrix(m)
+                   const char * frag_shader_fil):Object(m)
 {
   std::cout <<"Object create A"  << "\n";
   this->createObject(obj_file);
@@ -27,8 +27,9 @@ void Object3D::setVPmatrix(glm::mat4* v, glm::mat4* p) {
 }
 
 
-Object3D::Object3D(const Object3D& other){
+Object3D::Object3D(const Object3D& other):Object(other.modelMatrix){
   std::cout <<"Object create b"  << "\n";
+  this->set_father(other.get_father());
 }
 
 Object3D& Object3D::operator =(const Object3D& other) {
@@ -45,8 +46,9 @@ void Object3D::draw() {
 
   glUseProgram(programID);
 
+  glm::mat4 tmp_model_matrix = this->get_model_matrix();
   glm::vec3 lightPos = glm::vec3(4,4,4);
-  glm::mat4 MVP = *this->projectionMatrix * *this->viewMatrix * this->modelMatrix;
+  glm::mat4 MVP = *this->projectionMatrix * *this->viewMatrix * tmp_model_matrix;
 
 
   glUniform3f(LightID, lightPos.x, lightPos.y, lightPos.z);
@@ -54,7 +56,7 @@ void Object3D::draw() {
 
   glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 
-  glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &modelMatrix[0][0]);
+  glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &tmp_model_matrix[0][0]);
 
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, Texture);

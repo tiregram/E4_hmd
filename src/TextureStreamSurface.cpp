@@ -9,7 +9,7 @@
 // For testing purposes
 #include <time.h> 
 
-TextureStreamSurface::TextureStreamSurface(glm::mat4 m, GLuint width, GLuint height):modelMatrix(m){
+TextureStreamSurface::TextureStreamSurface(glm::mat4 m, GLuint width, GLuint height):Object(m){
   widthPBO=width;
   heightPBO=height;
   dataSize=widthPBO*heightPBO*4;
@@ -97,8 +97,9 @@ TextureStreamSurface::TextureStreamSurface(glm::mat4 m, GLuint width, GLuint hei
 
 }
 
-TextureStreamSurface::TextureStreamSurface(const TextureStreamSurface& other) {
-  
+TextureStreamSurface::TextureStreamSurface(const TextureStreamSurface& other):Object(other.modelMatrix) 
+{
+  this->set_father(other.get_father());
 }
 
 void TextureStreamSurface::setVPmatrix(glm::mat4* v, glm::mat4* p) {
@@ -156,8 +157,8 @@ void TextureStreamSurface::draw() {
   ///////////////////////////////////////////////////////////
   //////////         Set Uniform Values          ////////////
   ///////////////////////////////////////////////////////////
-
-  glm::mat4 MVP = *this->projectionMatrix * *this->viewMatrix * this->modelMatrix;
+  glm::mat4 tmp_model_matrix = this->get_model_matrix();
+  glm::mat4 MVP = *this->projectionMatrix * *this->viewMatrix * tmp_model_matrix;
 
   ModelMatrixID = glGetUniformLocation(shaderID, "M");
   ViewMatrixID  = glGetUniformLocation(shaderID, "V");
@@ -167,7 +168,7 @@ void TextureStreamSurface::draw() {
 
 
 
-  glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &modelMatrix[0][0]);
+  glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &tmp_model_matrix[0][0]);
   glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &(*viewMatrix)[0][0]);
   glUniformMatrix4fv(ProjectionMatrixID, 1, GL_FALSE, &(*projectionMatrix)[0][0]);
 
