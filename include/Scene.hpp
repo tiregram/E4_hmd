@@ -8,6 +8,7 @@
 #include "OpenHmdWrapper.hpp"
 #include "GLFWContext.hpp"
 
+int const FPS_LIMIT = 40;
 
 class Scene
 {
@@ -35,5 +36,7 @@ protected:
   GLFWContext &glfw_context;
 
   glm::mat4 viewMatrix;
+
+  float old_time;
 
 };

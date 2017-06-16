@@ -5,7 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-
+#include <unistd.h>
 #include "Scene.hpp"
 
 #include "Shader.hpp"
@@ -36,6 +36,7 @@ Scene::~Scene() noexcept
 
 void  Scene::draw()
 {
+
   glfw_context.computeMatricesFromInputs();
 
 
@@ -60,13 +61,25 @@ void  Scene::draw()
 
 }
 
-bool
-Scene::update()
+bool Scene::update()
 {
-  double t=0;
 
+  float time_for_limit = 1.0 / FPS_LIMIT;
+
+  float new_time = glfwGetTime();
+  float time_enlapsed = new_time - this->old_time;
+  this->old_time = new_time;
+  std::cout << "\r FPS : " << 1/time_enlapsed;
+
+/*
+  float delta = time_for_limit - time_enlapsed;
+  delta *= 1000;
+  std::cout << " \r" <<delta;
+  if(delta > 0)
+    usleep(100);
+*/
   for(auto& one_obj : objects){
-    one_obj->update(t);
+    one_obj->update(time_enlapsed);
   }
 
   //return  glfwGetKey(this->glfw_context.getWindow(), GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(this->glfw_context.getWindow()) == 0 ;
