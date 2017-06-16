@@ -116,6 +116,7 @@ void Side::draw() {
 }
 
 
+
 void Side::drawSceneInEye() {
 
   glm::mat4 save = *this->viewMatrix;
@@ -126,7 +127,7 @@ void Side::drawSceneInEye() {
   hmd.getProjMatrix(s,*this->projectionMatrix);
   hmd.getViewMatrix(s,mat_v);
 
-  *this->viewMatrix *= mat_v;
+  *this->viewMatrix = mat_v**this->viewMatrix;
 
   glEnable(GL_BLEND);
   glEnable(GL_DEPTH_TEST);

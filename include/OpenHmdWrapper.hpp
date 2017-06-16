@@ -74,6 +74,8 @@ public:
   void  bindShader();
   void  unbindShader();;
 
+  void update();
+  
 protected:
 private:
   ohmd_context* ctx;

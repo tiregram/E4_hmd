@@ -66,6 +66,10 @@ void OpenHmdWrapper::getViewMatrix(SIDE s, glm::mat4& view) {
 
 }
 
+void OpenHmdWrapper::update() {
+  ohmd_ctx_update(ctx);
+}
+
 void OpenHmdWrapper::getProjMatrix(SIDE s, glm::mat4& view) {
 
   if(s == LEFT)

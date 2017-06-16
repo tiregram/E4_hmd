@@ -204,6 +204,33 @@ src/Object3D.cpp.s:
 	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/Object3D.cpp.s
 .PHONY : src/Object3D.cpp.s
 
+src/ObjectConnection.o: src/ObjectConnection.cpp.o
+
+.PHONY : src/ObjectConnection.o
+
+# target to build an object file
+src/ObjectConnection.cpp.o:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/ObjectConnection.cpp.o
+.PHONY : src/ObjectConnection.cpp.o
+
+src/ObjectConnection.i: src/ObjectConnection.cpp.i
+
+.PHONY : src/ObjectConnection.i
+
+# target to preprocess a source file
+src/ObjectConnection.cpp.i:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/ObjectConnection.cpp.i
+.PHONY : src/ObjectConnection.cpp.i
+
+src/ObjectConnection.s: src/ObjectConnection.cpp.s
+
+.PHONY : src/ObjectConnection.s
+
+# target to generate assembly for a file
+src/ObjectConnection.cpp.s:
+	$(MAKE) -f CMakeFiles/openglexample.dir/build.make CMakeFiles/openglexample.dir/src/ObjectConnection.cpp.s
+.PHONY : src/ObjectConnection.cpp.s
+
 src/Objloader.o: src/Objloader.cpp.o
 
 .PHONY : src/Objloader.o
@@ -465,6 +492,9 @@ help:
 	@echo "... src/Object3D.o"
 	@echo "... src/Object3D.i"
 	@echo "... src/Object3D.s"
+	@echo "... src/ObjectConnection.o"
+	@echo "... src/ObjectConnection.i"
+	@echo "... src/ObjectConnection.s"
 	@echo "... src/Objloader.o"
 	@echo "... src/Objloader.i"
 	@echo "... src/Objloader.s"

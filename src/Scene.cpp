@@ -36,8 +36,8 @@ Scene::~Scene() noexcept
 
 void  Scene::draw()
 {
+  hmd.update();
   glfw_context.computeMatricesFromInputs();
-
 
   viewMatrix =   glfw_context.getViewMatrix();
 
