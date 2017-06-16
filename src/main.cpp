@@ -11,6 +11,7 @@
 #include "Object.hpp"
 #include "Scene.hpp"
 #include "Debug.hpp"
+#include "ObjectContainer.hpp"
 #include "TextureStreamSurface.hpp"
 
 #include "GLFWContext.hpp"
@@ -81,6 +82,7 @@ int main(int argc, char *argv[])
   GLuint elementId;
   GLuint textureId;
 
+  /*
   sce.addObject(new Object3D(x,
                                      "obj/untitled.obj",
                                      "obj/uvmap.DDS",
@@ -105,17 +107,46 @@ int main(int argc, char *argv[])
   //  auto testStephenStream= new TextureStreamSurface(sxx, 100, 100);
   auto testStephenStream2= new TextureStreamSurface(sxx2, 100, 100);
 
-  //  sce.addObject(testStephenStream);
-  sce.addObject(testStephenStream2);
-  glm::mat4 z=  glm::translate(d,glm::vec3(-2.0f, 0.0f, 0.0f));
+  */ 
+  //sce.addObject(testStephenStream);
+  //sce.addObject(testStephenStream2);
+  glm::mat4 z=  glm::translate(d,glm::vec3(0.0f, 0.0f, 0.0f));
   sce.addObject(new Object3D(z,
                                   "obj/suzanne.obj",
                                   "obj/uvmap.DDS",
                                   "shader/StandardShading.vertexshader",
                                   "shader/StandardShading.fragmentshader"));
 
+
+
+
+
+  glm::mat4 yy=  glm::translate(d,glm::vec3(2.0f, 0.0f, 0.0f));
+  Object3D* suzanne_one =  new Object3D(yy,
+                             "obj/suzanne.obj",
+                             "obj/uvmap.DDS",
+                             "shader/StandardShading.vertexshader",
+                             "shader/StandardShading.fragmentshader"); 
+
+  glm::mat4 zz=  glm::translate(d,glm::vec3(-2.0f, 0.0f, 0.0f));
+  Object3D* suzanne_two =  new Object3D(zz,
+                                  "obj/suzanne.obj",
+                                  "obj/uvmap.DDS",
+                                  "shader/StandardShading.vertexshader",
+                                  "shader/StandardShading.fragmentshader");
+
+
+
+  glm::mat4 m=  glm::translate(d,glm::vec3(0.0f, 0.0f, 0.0f));
+  ObjectContainer * container = new ObjectContainer(m);
+  container->add_object(suzanne_one);
+  container->add_object(suzanne_two);
+
+  sce.addObject(container);
+
+
   // update_debug(glfw_context,sce.objects);
-  // draw_debug(sce.objects);
+  //draw_debug(glfw_context,sce.objects);
 
   while(sce.update())
     sce.draw();
