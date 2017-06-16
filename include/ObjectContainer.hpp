@@ -6,7 +6,6 @@
 class ObjectContainer : public Object
 {
 public:
-  	
 
 	ObjectContainer(glm::mat4 m);
 

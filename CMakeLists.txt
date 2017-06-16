@@ -1,10 +1,14 @@
 project (hmd)
 cmake_minimum_required(VERSION 3.5)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/" )
 
 set(CMAKE_CXX_STANDARD 11)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+
+include("${CMAKE_CURRENT_SOURCE_DIR}/lib/server_X/CMakeLists.txt")
+
+include_directories("lib/server_X/src/")
 
 
 find_package(HIDAPI REQUIRED)

@@ -1,7 +1,11 @@
+#pragma once
+
+#include "ObjectContainer.hpp"
+#include "X/XDisplay.hpp"
+#include "X/XWindow.hpp"
 
 
-
-class ObjectConnection
+class ObjectConnection : ObjectContainer
 {
 public:
   //! Default constructor
@@ -10,20 +14,21 @@ public:
   //! Copy constructor
   ObjectConnection(const ObjectConnection &other);
 
-  //! Move constructor
-  ObjectConnection(ObjectConnection &&other) noexcept;
-
   //! Destructor
   virtual ~ObjectConnection() noexcept;
 
   //! Copy assignment operator
   ObjectConnection& operator=(const ObjectConnection &other);
 
-  //! Move assignment operator
-  ObjectConnection& operator=(ObjectConnection &&other) noexcept;
-
-
+  void update(double t)
+  {
+    ObjectContainer::update(t);
+  }
 
 protected:
+
 private:
+
+  std::shared_ptr<G::Display> di;
+
 };
