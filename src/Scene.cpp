@@ -60,7 +60,8 @@ void  Scene::draw()
 bool
 Scene::update()
 {
-  double t=0;
+  //double t=0;
+  double t = 1.0/60;
 
   for(auto& one_obj : objects){
     one_obj->update(t);
