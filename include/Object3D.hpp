@@ -19,9 +19,6 @@ public:
   //! Copy constructor
   Object3D(const Object3D &other);
 
-  //! Move constructor
-  Object3D(Object3D &&other) noexcept{};
-
   //! Destructor
   virtual ~Object3D() noexcept{};
 
@@ -35,10 +32,9 @@ public:
   //! Move assignment operator
   Object3D& operator=(Object3D &&other) noexcept{};
 
-  virtual void setVPmatrix(glm::mat4* v, glm::mat4* p);
-
   virtual void update(double delta_time);
   virtual void draw();
+  virtual void setVPmatrix(glm::mat4* v, glm::mat4* p);
 
   /////////////////////////////////////////////////////////////////////////////
   //                                 OGL PART                                //
@@ -72,8 +68,6 @@ public:
 
   glm::mat4* projectionMatrix ;
   glm::mat4* viewMatrix;
-  glm::mat4 modelMatrix;
-
 
 
 protected:

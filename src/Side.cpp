@@ -6,7 +6,7 @@
 #include <iostream>
 #include "Scene.hpp"
 
-Side::Side(SIDE side, OpenHmdWrapper& ophmd,Scene& sce):s(side),hmd(ophmd),sce(sce) {
+Side::Side(SIDE side, OpenHmdWrapper& ophmd,Scene& sce):Object(glm::mat4(1.0)),s(side),hmd(ophmd),sce(sce) {
 
 
 
@@ -114,7 +114,6 @@ void Side::draw() {
   glUseProgram(0);
 
 }
-
 
 
 void Side::drawSceneInEye() {
