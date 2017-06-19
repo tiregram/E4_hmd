@@ -1,5 +1,5 @@
 #pragma once
-#include <openhmd/openhmd.h>
+#include <openhmd.h>
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include "Side.hpp"
@@ -71,7 +71,7 @@ public:
   OpenHmdWrapper& operator=(OpenHmdWrapper &&other) noexcept;
 
   void  createShader();
-  void  bindShader();
+  void  bindShader(bool left);
   void  unbindShader();;
 
   void update();
