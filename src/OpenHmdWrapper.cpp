@@ -56,7 +56,7 @@ OpenHmdWrapper::OpenHmdWrapper() {
   }
 
   ////////////////////////// DEBUG WITHOUT OCULUS /////////////////////////////////////////////:
-  distortion_coeffs[0] = 0.098;
+  /*distortion_coeffs[0] = 0.098;
   distortion_coeffs[1] = 0.324;
   distortion_coeffs[2] = -0.241;
   distortion_coeffs[3] = 0.819;
@@ -65,7 +65,7 @@ OpenHmdWrapper::OpenHmdWrapper() {
   aberr_scale[1] = 1.0;
   aberr_scale[2] = 1.0008074;
 
-  sep = 0.054;
+  sep = 0.054;*/
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
 
