@@ -49,9 +49,11 @@ OpenHmdWrapper::OpenHmdWrapper() {
   //	eye_w = hmd_w/2;
 	//eye_h = hmd_h;
 
+  //this->hmd_w*=2;
+  //this->hmd_h*=2;
 
   eye_w = hmd_w;
-	eye_h = hmd_h*2;
+	eye_h = hmd_h;
 
 	ohmd_device_settings_destroy(settings);
 
@@ -60,7 +62,7 @@ OpenHmdWrapper::OpenHmdWrapper() {
   }
 
   ////////////////////////// DEBUG WITHOUT OCULUS /////////////////////////////////////////////:
-  /*distortion_coeffs[0] = 0.098;
+  distortion_coeffs[0] = 0.098;
   distortion_coeffs[1] = 0.324;
   distortion_coeffs[2] = -0.241;
   distortion_coeffs[3] = 0.819;
@@ -69,7 +71,7 @@ OpenHmdWrapper::OpenHmdWrapper() {
   aberr_scale[1] = 1.0;
   aberr_scale[2] = 1.0008074;
 
-  sep = 0.054;*/
+  sep = 0.054;
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
 
