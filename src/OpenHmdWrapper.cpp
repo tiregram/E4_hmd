@@ -46,8 +46,12 @@ OpenHmdWrapper::OpenHmdWrapper() {
 	warp_scale = (left_lens_center[0] > right_lens_center[0]) ? left_lens_center[0] : right_lens_center[0];
 	warp_adj = 1.0f;
 
-	eye_w = hmd_w/2;
-	eye_h = hmd_h;
+  //	eye_w = hmd_w/2;
+	//eye_h = hmd_h;
+
+
+  eye_w = hmd_w;
+	eye_h = hmd_h*2;
 
 	ohmd_device_settings_destroy(settings);
 
