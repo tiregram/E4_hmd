@@ -30,7 +30,17 @@ int createGLEW()
 	printf("OpenGL Renderer: %s\n", glGetString(GL_RENDERER));
 	printf("OpenGL Vendor: %s\n", glGetString(GL_VENDOR));
 	printf("OpenGL Version: %s\n", glGetString(GL_VERSION));
+#version 330 core
+out vec4 FragColor;
 
+in vec3 TexCoords;
+
+uniform samplerCube skybox;
+
+void main()
+{    
+    FragColor = texture(skybox, TexCoords);
+}
 }
 
 

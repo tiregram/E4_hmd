@@ -100,7 +100,7 @@ OpenHmdWrapper::OpenHmdWrapper(const OpenHmdWrapper& other) {
 }
 
 
-void OpenHmdWrapper::bindShader(bool left) {
+void OpenHmdWrapper::bindShader(SIDE s) {
   glUseProgram(shaderHMD);
 
   // getting IDs for each uniform variable
@@ -119,6 +119,8 @@ void OpenHmdWrapper::bindShader(bool left) {
   glUniform4fv(HmdWarpParamID,1, distortion_coeffs);
   glUniform3fv(aberrID, 1, aberr_scale);
 
+
+  /*
   printf("viewport_scale: [%0.4f, %0.4f]\n", viewport_scale[0], viewport_scale[1]);
   printf("lens separation: %04f\n", sep);
   printf("IPD: %0.4f\n", ipd);
@@ -126,10 +128,10 @@ void OpenHmdWrapper::bindShader(bool left) {
   printf("distoriton coeffs: [%0.4f, %0.4f, %0.4f, %0.4f]\n", distortion_coeffs[0], distortion_coeffs[1], distortion_coeffs[2], distortion_coeffs[3]);
   printf("aberration coeffs: [%0.4f, %0.4f, %0.4f]\n", aberr_scale[0], aberr_scale[1], aberr_scale[2]);
   printf("left_lens_center: [%0.4f, %0.4f]\n", left_lens_center[0], left_lens_center[1]);
-  printf("right_lens_center: [%0.4f, %0.4f]\n", right_lens_center[0], right_lens_center[1]);
+  printf("right_lens_center: [%0.4f, %0.4f]\n", right_lens_center[0], right_lens_center[1]);*/
 
 
-  if(left)
+  if(s == LEFT)
     {
       glUniform2fv(LensCenterID, 1, left_lens_center);
     }

@@ -71,7 +71,7 @@ public:
   OpenHmdWrapper& operator=(OpenHmdWrapper &&other) noexcept;
 
   void  createShader();
-  void  bindShader(bool left);
+  void  bindShader(SIDE s);
   void  unbindShader();;
 
   void update();
