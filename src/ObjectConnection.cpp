@@ -15,7 +15,7 @@ ObjectConnection::ObjectConnection(glm::mat4 m):ObjectContainer(m)
       std::cout << "size"<<gm.get_width()<<gm.get_height() << "\n";
       TextureStreamSurface* tss =new TextureStreamSurface(position, gm.get_height(),gm.get_width());
       tss->updatePixels=[a](GLubyte* dp, int b, int c){
-        std::cout <<"update"  << "\n";
+
         a->get_screen(dp);
         };
       this->add_object(tss);
