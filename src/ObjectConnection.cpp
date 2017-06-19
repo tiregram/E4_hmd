@@ -12,7 +12,6 @@ ObjectConnection::ObjectConnection(glm::mat4 m):ObjectContainer(m)
 
   for(auto a : this->connection->get_windows_list())
     {
-
       position = glm::translate(position,glm::vec3(3.0f, 0.0f, 0.0f));
       auto& gm = a->get_geo_manager();
       std::cout << "size"<<gm.get_width()<<gm.get_height() << "\n";
