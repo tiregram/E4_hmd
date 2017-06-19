@@ -3,32 +3,32 @@
 #include "ObjectContainer.hpp"
 #include "X/XDisplay.hpp"
 #include "X/XWindow.hpp"
+#include "TextureStreamSurface.hpp"
 
-
-class ObjectConnection : ObjectContainer
+class ObjectConnection : public ObjectContainer
 {
 public:
   //! Default constructor
-  ObjectConnection();
-
-  //! Copy constructor
-  ObjectConnection(const ObjectConnection &other);
+  ObjectConnection(glm::mat4 m);
 
   //! Destructor
   virtual ~ObjectConnection() noexcept;
 
-  //! Copy assignment operator
-  ObjectConnection& operator=(const ObjectConnection &other);
 
   void update(double t)
   {
     ObjectContainer::update(t);
   }
 
+  void draw()
+  {
+    ObjectContainer::draw();
+  }
 protected:
 
 private:
 
-  std::shared_ptr<G::Display> di;
+  std::shared_ptr<G::Display> connection;
+  std::vector<TextureStreamSurface> SurfaceToDraw;
 
 };

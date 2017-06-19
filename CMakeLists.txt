@@ -6,10 +6,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/" )
 set(CMAKE_CXX_STANDARD 11)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
-include("${CMAKE_CURRENT_SOURCE_DIR}/lib/server_X/CMakeLists.txt")
-
-include_directories("lib/server_X/src/")
-
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/lib/server_X/")
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/lib/server_X/src/")
 
 find_package(HIDAPI REQUIRED)
 if(HIDAPI_FOUND)
@@ -61,3 +59,4 @@ include_directories("$ENV{HOME}/OpenHMD/include" ${CMAKE_BINARY_DIR}/include ${G
 link_directories(${CMAKE_BINARY_DIR})
 add_executable(openglexample ${src_mesh})
 target_link_libraries(openglexample PRIVATE ${HIDAPI_LIBRARIES} "$ENV{HOME}/OpenHMD/libopenhmd.a" pthread m ${GLFW_LIBRARIES} ${GLEW_LIBRARIES} ${OPENGL_LIBRARIES} ${ASSIMP_LIBRARIES})
+target_link_libraries(openglexample PRIVATE wmlib_shared)

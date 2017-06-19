@@ -143,7 +143,7 @@ void TextureStreamSurface::draw() {
   if(ptr)
     {
       // update data directly on the mapped buffer
-      updatePixels(ptr, dataSize);
+      updatePixels(ptr, dataSize,100);
       glUnmapBufferARB(GL_PIXEL_UNPACK_BUFFER_ARB); // release pointer to mapping buffer
     }
 
@@ -172,8 +172,6 @@ void TextureStreamSurface::draw() {
   glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 
 
-
-  
   /////////////////////////////////////////////////////////////////////////////
   //                             load obj                                    //
   /////////////////////////////////////////////////////////////////////////////
@@ -203,38 +201,36 @@ void TextureStreamSurface::draw() {
   glBindBufferARB(GL_PIXEL_UNPACK_BUFFER_ARB, 0);
 
   //Updating pixels
-  updatePixels(imageData, dataSize);
-
-
-
+  //  updatePixels(imageData, dataSize,100);
 }
 
+// void TextureStreamSurface::updatePixels(GLubyte* dst, int sizeX,int sizeY)
+// {
+//   static int unsigned v=0;
+//   // for testing purposes
+//   static int unsigned randGeneratedInt =0;
+//   srand (v++);
+//   randGeneratedInt = (rand()%(256*256*256)<<8)+256;
 
-void TextureStreamSurface::updatePixels(GLubyte* dst, int size)
-{
-  static int unsigned v=0;
-  // for testing purposes
-  static int unsigned randGeneratedInt =0;
-  srand (v++);
-  randGeneratedInt = (rand()%(256*256*256)<<8)+256;
+
+//   if(!dst)
+//     return;
+
+//   int* ptr = (int*)dst;
+
+//   // copy 4 bytes at once
+//   for(int i = 0; i < heightPBO; ++i)
+//     {
+//       for(int j = 0; j < widthPBO; ++j)
+//         {
+
+//           *ptr = randGeneratedInt++;
+//           ++ptr;
+
+//         }
+//     }
+// }
 
 
-  if(!dst)
-    return;
-
-  int* ptr = (int*)dst;
-
-  // copy 4 bytes at once
-  for(int i = 0; i < heightPBO; ++i)
-    {
-      for(int j = 0; j < widthPBO; ++j)
-        {
-          randGeneratedInt++;
-          *ptr = (rand()%(256*256*256));
-          ++ptr;
-
-        }
-    }
-}
 
 

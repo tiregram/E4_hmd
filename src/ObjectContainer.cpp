@@ -37,7 +37,7 @@ void ObjectContainer::add_object(Object * object_to_add)
 
 void ObjectContainer::update(double delta_time)
 {
-	this->modelMatrix = glm::rotate(this->modelMatrix,(float)(delta_time), glm::vec3(1.0f,1.0f,1.0f));
+  //	this->modelMatrix = glm::rotate(this->modelMatrix,(float)(delta_time), glm::vec3(1.0f,1.0f,1.0f));
 	for(auto o : this->objects_contained)
 		o->update(delta_time);
 }
