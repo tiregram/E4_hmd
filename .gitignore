@@ -11,3 +11,4 @@ openglexample
 DEBUGopenglexample
 .\#*
 Makefile
+lib/server_X
