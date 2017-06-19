@@ -55,6 +55,21 @@ OpenHmdWrapper::OpenHmdWrapper() {
 		std::cout <<"failed to open device:" << ohmd_ctx_get_error(ctx) << "\n";
   }
 
+  ////////////////////////// DEBUG WITHOUT OCULUS /////////////////////////////////////////////:
+  distortion_coeffs[0] = 0.098;
+  distortion_coeffs[1] = 0.324;
+  distortion_coeffs[2] = -0.241;
+  distortion_coeffs[3] = 0.819;
+
+  aberr_scale[0] = 0.9952420;
+  aberr_scale[1] = 1.0;
+  aberr_scale[2] = 1.0008074;
+
+  sep = 0.054;
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 }
 
 void OpenHmdWrapper::getViewMatrix(SIDE s, glm::mat4& view) {
@@ -85,8 +100,48 @@ OpenHmdWrapper::OpenHmdWrapper(const OpenHmdWrapper& other) {
 }
 
 
-void OpenHmdWrapper::bindShader() {
+void OpenHmdWrapper::bindShader(bool left) {
   glUseProgram(shaderHMD);
+
+  // getting IDs for each uniform variable
+  GLuint warpTextureID = glGetUniformLocation(shaderHMD, "warpTexture");
+  GLuint LensCenterID = glGetUniformLocation(shaderHMD, "LensCenter");
+  GLuint ViewportScaleID = glGetUniformLocation(shaderHMD, "ViewportScale");
+  GLuint WarpScaleID = glGetUniformLocation(shaderHMD, "WarpScale");
+  GLuint HmdWarpParamID = glGetUniformLocation(shaderHMD, "HmdWarpParam");
+  GLuint aberrID = glGetUniformLocation(shaderHMD, "aberr");
+
+  glUniform1i(warpTextureID, 0);
+
+  
+  glUniform2fv(ViewportScaleID,1,viewport_scale);
+  glUniform1f(WarpScaleID, warp_scale*warp_adj);
+  glUniform4fv(HmdWarpParamID,1, distortion_coeffs);
+  glUniform3fv(aberrID, 1, aberr_scale);
+
+  printf("viewport_scale: [%0.4f, %0.4f]\n", viewport_scale[0], viewport_scale[1]);
+  printf("lens separation: %04f\n", sep);
+  printf("IPD: %0.4f\n", ipd);
+  printf("warp_scale: %0.4f\r\n", warp_scale);
+  printf("distoriton coeffs: [%0.4f, %0.4f, %0.4f, %0.4f]\n", distortion_coeffs[0], distortion_coeffs[1], distortion_coeffs[2], distortion_coeffs[3]);
+  printf("aberration coeffs: [%0.4f, %0.4f, %0.4f]\n", aberr_scale[0], aberr_scale[1], aberr_scale[2]);
+  printf("left_lens_center: [%0.4f, %0.4f]\n", left_lens_center[0], left_lens_center[1]);
+  printf("right_lens_center: [%0.4f, %0.4f]\n", right_lens_center[0], right_lens_center[1]);
+
+
+  if(left)
+    {
+      glUniform2fv(LensCenterID, 1, left_lens_center);
+    }
+
+  else
+    {
+      glUniform2fv(LensCenterID, 1, right_lens_center);
+    }
+  
+
+  //std::cout << "BINDINGSHADER\n";
+
 }
 
 OpenHmdWrapper& OpenHmdWrapper::operator =(const OpenHmdWrapper& other) {
@@ -103,7 +158,8 @@ void OpenHmdWrapper::createShader() {
 	// const char* fragment_HMD;
 	// ohmd_gets(OHMD_GLSL_DISTORTION_FRAG_SRC, &fragment_HMD);
 
-	shaderHMD = LoadShadersFromPathFile("shader/vert.glsl","shader/frag.glsl" );
+	shaderHMD = LoadShadersFromPathFile("shader/vertHMD.glsl","shader/fragHMD.glsl" );
+  
 	// glUseProgram(shaderHMD);
 	// glUniform1i(glGetUniformLocation(shaderHMD, "warpTexture"), 0);
 	// glUniform2fv(glGetUniformLocation(shaderHMD, "ViewportScale"), 1, viewport_scale);

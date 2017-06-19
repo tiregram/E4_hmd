@@ -1,4 +1,4 @@
-#include <openhmd/openhmd.h>
+#include <openhmd.h>
 
 #include <iostream>
 #include <GL/glew.h>
