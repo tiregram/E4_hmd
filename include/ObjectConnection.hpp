@@ -22,8 +22,6 @@ public:
   //! Move assignment operator
   ObjectConnection& operator=(ObjectConnection &&other) noexcept;
 
-
-
 protected:
 private:
 };
