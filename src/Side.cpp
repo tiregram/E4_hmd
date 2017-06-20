@@ -8,8 +8,6 @@
 
 Side::Side(SIDE side, OpenHmdWrapper& ophmd,Scene& sce):Object(glm::mat4(1.0)),s(side),hmd(ophmd),sce(sce) {
 
-
-
   unsigned short element[6] = {0,1,2,2,3,0};
   glGenBuffers(1, &buf_elem_panel);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buf_elem_panel);
@@ -63,7 +61,7 @@ void Side::setVPmatrix(glm::mat4* v, glm::mat4* p) {
 
 
 void Side::create_fbo() {
-  
+
   glGenFramebuffers(1, &fbo);
   glBindFramebuffer(GL_FRAMEBUFFER, fbo);
 

@@ -5,7 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-
+#include "Cubemap.hpp"
 
 #include "Shader.hpp"
 #include "Object.hpp"
@@ -30,17 +30,6 @@ int createGLEW()
 	printf("OpenGL Renderer: %s\n", glGetString(GL_RENDERER));
 	printf("OpenGL Vendor: %s\n", glGetString(GL_VENDOR));
 	printf("OpenGL Version: %s\n", glGetString(GL_VERSION));
-#version 330 core
-out vec4 FragColor;
-
-in vec3 TexCoords;
-
-uniform samplerCube skybox;
-
-void main()
-{    
-    FragColor = texture(skybox, TexCoords);
-}
 }
 
 
@@ -84,13 +73,7 @@ int main(int argc, char *argv[])
   glm::mat4 sxx=glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
   glm::mat4 sxx2=glm::translate(d,glm::vec3(3.0f, 0.0f, -5.0f));
 
-  //
-  GLuint pboId;
-  GLuint shaderId;
-  GLuint vertId;
-  GLuint uvId;
-  GLuint elementId;
-  GLuint textureId;
+  sce.addObject(new Cubemap(glm::mat4(1.0),"obj/uvmap.DDS"));
 
   /*
   sce.addObject(new Object3D(x,
