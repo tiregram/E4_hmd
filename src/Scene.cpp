@@ -63,21 +63,11 @@ void  Scene::draw()
 
 bool Scene::update()
 {
-
-  float time_for_limit = 1.0 / FPS_LIMIT;
-
   float new_time = glfwGetTime();
   float time_enlapsed = new_time - this->old_time;
   this->old_time = new_time;
-  std::cout << "\r FPS : " << 1/time_enlapsed;
+  std::cout << "\rFPS : " << 1/time_enlapsed;
 
-/*
-  float delta = time_for_limit - time_enlapsed;
-  delta *= 1000;
-  std::cout << " \r" <<delta;
-  if(delta > 0)
-    usleep(100);
-*/
   for(auto& one_obj : objects){
     one_obj->update(time_enlapsed);
   }

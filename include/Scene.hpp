@@ -8,7 +8,6 @@
 #include "OpenHmdWrapper.hpp"
 #include "GLFWContext.hpp"
 
-int const FPS_LIMIT = 40;
 
 class Scene
 {
