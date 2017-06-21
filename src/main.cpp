@@ -13,7 +13,7 @@
 #include "Debug.hpp"
 #include "ObjectContainer.hpp"
 #include "TextureStreamSurface.hpp"
-
+#include "ObjectConnection.hpp"
 #include "GLFWContext.hpp"
 
 
@@ -99,11 +99,15 @@ int main(int argc, char *argv[])
 
   //  auto testStephenStream= new TextureStreamSurface(sxx, 100, 100);
   */
-  auto testStephenStream2= new TextureStreamSurface(sxx2, 100, 100);
+  // auto testStephenStream2= new TextureStreamSurface(sxx2, 100, 100);
+  // //sce.addObject(testStephenStream);
+  // sce.addObject(testStephenStream2);
 
-
+  auto testConnectionArthur= new ObjectConnection(glm::mat4(1.0f));
   //sce.addObject(testStephenStream);
-  sce.addObject(testStephenStream2);
+  sce.addObject(testConnectionArthur);
+
+
   /*glm::mat4 z=  glm::translate(d,glm::vec3(0.0f, 0.0f, 0.0f));
   sce.addObject(new Object3D(z,
                                   "obj/suzanne.obj",
@@ -127,21 +131,6 @@ int main(int argc, char *argv[])
                                   "shader/StandardShading.fragmentshader");
 
 
-  glm::mat4 zzz=  glm::translate(d,glm::vec3(0.0f, -0.3f, 0.0f));
-  Object3D* table =  new Object3D(zzz,
-                                  "obj/table.obj",
-                                  "obj/uvmap.DDS",
-                                  "shader/StandardShading.vertexshader",
-                                  "shader/StandardShading.fragmentshader");
-
-  zzz=  glm::translate(zzz,glm::vec3(0.0f, -0.6f, 0.0f));
-  Object3D* grnd =  new Object3D(zzz,
-                                  "obj/grnd.obj",
-                                  "obj/uvmap.DDS",
-                                  "shader/StandardShading.vertexshader",
-                                  "shader/StandardShading.fragmentshader");
-
-
 
   //glm::rotate(d, glm::vec3(90,0,0));
   glm::mat4 m=  glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
@@ -150,9 +139,8 @@ int main(int argc, char *argv[])
   container->add_object(suzanne_two);
 
   sce.addObject(container);
-  sce.addObject(table);
-  sce.addObject(grnd);
-
+  // sce.addObject(table);
+  // sce.addObject(grnd);
 
   // update_debug(glfw_context,sce.objects);
   //draw_debug(glfw_context,sce.objects);

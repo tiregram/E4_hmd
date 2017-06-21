@@ -56,7 +56,7 @@ OpenHmdWrapper::OpenHmdWrapper() {
   }
 
   ////////////////////////// DEBUG WITHOUT OCULUS /////////////////////////////////////////////:
-  distortion_coeffs[0] = 0.098;
+  /*distortion_coeffs[0] = 0.098;
   distortion_coeffs[1] = 0.324;
   distortion_coeffs[2] = -0.241;
   distortion_coeffs[3] = 0.819;
@@ -65,7 +65,7 @@ OpenHmdWrapper::OpenHmdWrapper() {
   aberr_scale[1] = 1.0;
   aberr_scale[2] = 1.0008074;
 
-  sep = 0.054;
+  sep = 0.054;*/
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -113,12 +113,10 @@ void OpenHmdWrapper::bindShader(SIDE s) {
 
   glUniform1i(warpTextureID, 0);
 
-  
   glUniform2fv(ViewportScaleID,1,viewport_scale);
   glUniform1f(WarpScaleID, warp_scale*warp_adj);
   glUniform4fv(HmdWarpParamID,1, distortion_coeffs);
   glUniform3fv(aberrID, 1, aberr_scale);
-
 
   /*
   printf("viewport_scale: [%0.4f, %0.4f]\n", viewport_scale[0], viewport_scale[1]);
@@ -140,7 +138,6 @@ void OpenHmdWrapper::bindShader(SIDE s) {
     {
       glUniform2fv(LensCenterID, 1, right_lens_center);
     }
-  
 
   //std::cout << "BINDINGSHADER\n";
 

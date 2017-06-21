@@ -22,6 +22,7 @@ Object* Object::get_father() const
 	return this->father;
 }
 
+
 glm::mat4 Object::get_father_model_matrix()
 {
 	if(this->father == NULL) 

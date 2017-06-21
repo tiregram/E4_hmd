@@ -3,6 +3,7 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
+#include <functional>
 
 #include <vector>
 #include <iostream>
@@ -33,7 +34,7 @@ public:
   TextureStreamSurface& operator=(TextureStreamSurface &&other) noexcept{};
 
   //! update the pixel grid on a given memory zone
-  void updatePixels(GLubyte* dst, int size);
+  //  void updatePixels(GLubyte* dst, int size);
 
 
   virtual void update(double delta_time);
@@ -65,6 +66,8 @@ public:
   //taille du buffer
   GLuint dataSize;
 
+  std::function<void(GLubyte*, int, int)> updatePixels;
+  //void (*updatePixels)(GLubyte*, int, int);
 
   /////////////////////////////////////////////////////////////////////////////
   //                                 3D PART                                 //
