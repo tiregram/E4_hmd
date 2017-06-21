@@ -127,13 +127,31 @@ int main(int argc, char *argv[])
                                   "shader/StandardShading.fragmentshader");
 
 
+  glm::mat4 zzz=  glm::translate(d,glm::vec3(0.0f, -0.3f, 0.0f));
+  Object3D* table =  new Object3D(zzz,
+                                  "obj/table.obj",
+                                  "obj/uvmap.DDS",
+                                  "shader/StandardShading.vertexshader",
+                                  "shader/StandardShading.fragmentshader");
+
+  zzz=  glm::translate(zzz,glm::vec3(0.0f, -0.6f, 0.0f));
+  Object3D* grnd =  new Object3D(zzz,
+                                  "obj/grnd.obj",
+                                  "obj/uvmap.DDS",
+                                  "shader/StandardShading.vertexshader",
+                                  "shader/StandardShading.fragmentshader");
+
+
+
   //glm::rotate(d, glm::vec3(90,0,0));
-  glm::mat4 m=  glm::translate(d,glm::vec3(0.0f, 0.0f, 0.0f));
+  glm::mat4 m=  glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
   ObjectContainer * container = new ObjectContainer(m);
   container->add_object(suzanne_one);
   container->add_object(suzanne_two);
 
   sce.addObject(container);
+  sce.addObject(table);
+  sce.addObject(grnd);
 
 
   // update_debug(glfw_context,sce.objects);

@@ -88,14 +88,14 @@ void Object3D::draw() {
 
 
 void Object3D::createObject(const char* obj_file) {
-	bool res = loadAssImp(obj_file,indices, vertices, uvs, normals);
+	bool res = loadAssImp(obj_file,indices, indexed_vertices, indexed_uvs, indexed_normals);
 
   if(!res)
     {
       std::cout <<"error read .obj:"  <<obj_file<< "\n";
     }
 
-  indexVBO(vertices, uvs, normals, indices, indexed_vertices, indexed_uvs, indexed_normals);
+  //  indexVBO(vertices, uvs, normals, indices, indexed_vertices, indexed_uvs, indexed_normals);
 
   return;
 }

@@ -166,7 +166,7 @@ bool loadAssImp(
 		indices.push_back(mesh->mFaces[i].mIndices[1]);
 		indices.push_back(mesh->mFaces[i].mIndices[2]);
 	}
-	
+
 	// The "scene" pointer will be deleted automatically by "importer"
 
 }
