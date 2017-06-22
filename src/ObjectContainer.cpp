@@ -30,6 +30,7 @@ bool ObjectContainer::remove_object(Object * object_to_remove)
 
 void ObjectContainer::add_object(Object * object_to_add)
 {
+  object_to_add->setVPmatrix(viewMatrix,projectionMatrix);
 	object_to_add->set_father(this);
 	this->objects_contained.push_back(object_to_add);
 }
@@ -44,17 +45,18 @@ void ObjectContainer::update(double delta_time)
 
 void ObjectContainer::draw()
 {
-	for(auto o : this->objects_contained)		
-		o->draw();	
+	for(auto o : this->objects_contained)
+		o->draw();
 }
 
 void ObjectContainer::setVPmatrix(glm::mat4* v, glm::mat4* p)
 {
+  this->viewMatrix = v;
+  this->projectionMatrix = p;
 	for(auto o : this->objects_contained)
 		o->setVPmatrix(v, p);
 }
 
-	
 
 
 

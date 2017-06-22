@@ -27,10 +27,10 @@ public:
 	virtual void draw();
 	virtual void setVPmatrix(glm::mat4* v, glm::mat4* p);
 
-
-private: 
-	
+protected:
 	std::vector<Object*> objects_contained;
+
+private:
   	glm::mat4* projectionMatrix ;
   	glm::mat4* viewMatrix;
 

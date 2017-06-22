@@ -123,6 +123,8 @@ void TextureStreamSurface::update(double delta_time) {
   
 }
 
+int  TextureStreamSurface::get_id(){return win_id;}
+
 void TextureStreamSurface::draw() {
 
 

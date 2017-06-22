@@ -13,6 +13,9 @@
 class TextureStreamSurface : public Object
 {
 public:
+  int win_id;
+  virtual int get_id();
+
   //! Default constructor
   TextureStreamSurface(glm::mat4 m, GLuint width=100,GLuint height =100);
 
