@@ -56,6 +56,8 @@ int create_opengl()
 
 int main(int argc, char *argv[])
 {
+  // init hmd to get resolution data etc...  //////////////////////////////////
+  // if you have no hmd ,openhmd provide a fake hmd screen (1200x800) /////////
   OpenHmdWrapper hmd= OpenHmdWrapper();
 
   GLFWContext glfw_context = GLFWContext(hmd.get_hmd_w(),hmd.get_hmd_h());
@@ -70,52 +72,29 @@ int main(int argc, char *argv[])
   glm::mat4 d(1.0);
   glm::mat4 x=glm::translate(d,glm::vec3(0.0f, 0.0f, -15.0f));
 
-  glm::mat4 sxx=glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
-  glm::mat4 sxx2=glm::translate(d,glm::vec3(3.0f, 0.0f, -5.0f));
+  /////////////////////////////////////////////////////////////////////////////
+  //                                 Cube MAP                                //
+  /////////////////////////////////////////////////////////////////////////////
+  std::vector<std::string> map_files=
+    {"obj/mp_totality/totality_ft.tga",
+     "obj/mp_totality/totality_bk.tga",
+     "obj/mp_totality/totality_up.tga",
+     "obj/mp_totality/totality_dn.tga",
+     "obj/mp_totality/totality_rt.tga",
+     "obj/mp_totality/totality_lf.tga"
+    };
 
-  sce.addObject(new Cubemap(glm::mat4(1.0),"obj/uvmap.DDS"));
+  sce.addObject(new Cubemap(glm::mat4(1.0),map_files));
 
-  /*
-  sce.addObject(new Object3D(x,
-                                     "obj/untitled.obj",
-                                     "obj/uvmap.DDS",
-                                     "shader/StandardShading.vertexshader",
-                                     "shader/StandardShading.fragmentshader"));
-
-  glm::mat4 xx=glm::translate(d,glm::vec3(-3.0f, 0.0f, -5.0f));
-  sce.addObject(new Object3D(xx,
-                                     "obj/untitled.obj",
-                                     "obj/uvmap.DDS",
-                                     "shader/StandardShading.vertexshader",
-                                     "shader/StandardShading.fragmentshader"));
-
-  glm::mat4 y=  glm::translate(d,glm::vec3(2.0f, 0.0f, 0.0f));
-  sce.addObject(new Object3D(y,
-                             "obj/suzanne.obj",
-                             "obj/uvmap.DDS",
-                             "shader/StandardShading.vertexshader",
-                             "shader/StandardShading.fragmentshader"));
-
-
-  //  auto testStephenStream= new TextureStreamSurface(sxx, 100, 100);
-  */
-  // auto testStephenStream2= new TextureStreamSurface(sxx2, 100, 100);
-  // //sce.addObject(testStephenStream);
-  // sce.addObject(testStephenStream2);
-
+  /////////////////////////////////////////////////////////////////////////////
+  //                      Connection to display manager                      //
+  /////////////////////////////////////////////////////////////////////////////
   auto testConnectionArthur= new ObjectConnection(glm::mat4(1.0f));
-  //sce.addObject(testStephenStream);
   sce.addObject(testConnectionArthur);
 
-
-  /*glm::mat4 z=  glm::translate(d,glm::vec3(0.0f, 0.0f, 0.0f));
-  sce.addObject(new Object3D(z,
-                                  "obj/suzanne.obj",
-                                  "obj/uvmap.DDS",
-                                  "shader/StandardShading.vertexshader",
-                                  "shader/StandardShading.fragmentshader"));
-*/
-
+  /////////////////////////////////////////////////////////////////////////////
+  //                                contener                                //
+  /////////////////////////////////////////////////////////////////////////////
   glm::mat4 yy=  glm::translate(d,glm::vec3(2.0f, 0.0f, 0.0f));
   Object3D* suzanne_one =  new Object3D(yy,
                              "obj/suzanne.obj",
@@ -130,28 +109,23 @@ int main(int argc, char *argv[])
                                   "shader/StandardShading.vertexshader",
                                   "shader/StandardShading.fragmentshader");
 
-
-
-  //glm::rotate(d, glm::vec3(90,0,0));
   glm::mat4 m=  glm::translate(d,glm::vec3(0.0f, 0.0f, -5.0f));
+
   ObjectContainer * container = new ObjectContainer(m);
+
   container->add_object(suzanne_one);
   container->add_object(suzanne_two);
 
   sce.addObject(container);
-  // sce.addObject(table);
-  // sce.addObject(grnd);
 
-  // update_debug(glfw_context,sce.objects);
-  //draw_debug(glfw_context,sce.objects);
-
+  /////////////////////////////////////////////////////////////////////////////
+  //                                  draw                                   //
+  /////////////////////////////////////////////////////////////////////////////
   while(sce.update())
-    sce.draw();
-
-  for(auto& a : sce.objects )
     {
-      delete(a);
+      sce.draw();
     }
 
+  // sce is in charge of delete all element
   return 0;
 }

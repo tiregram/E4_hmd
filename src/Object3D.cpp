@@ -111,6 +111,8 @@ void Object3D::createOpengl(const char* vert_shader_file, const char* frag_shade
 	ViewMatrixID  = glGetUniformLocation(programID, "V");
 	ModelMatrixID = glGetUniformLocation(programID, "M");
 
+
+
   Texture       = loadDDS(texture_file);
 	TextureID     = glGetUniformLocation(programID, "myTextureSampler");
 	LightID       = glGetUniformLocation(programID, "LightPosition_worldspace");

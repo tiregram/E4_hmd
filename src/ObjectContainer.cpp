@@ -13,6 +13,13 @@ std::vector<Object *> ObjectContainer::get_objects()
 	return this->objects_contained;
 }
 
+ObjectContainer::~ObjectContainer() noexcept
+{
+  for(auto obj : this->objects_contained)
+    {
+      delete obj;
+    }
+}
 
 bool ObjectContainer::remove_object(Object * object_to_remove)
 {
@@ -56,9 +63,4 @@ void ObjectContainer::setVPmatrix(glm::mat4* v, glm::mat4* p)
 	for(auto o : this->objects_contained)
 		o->setVPmatrix(v, p);
 }
-
-
-
-
-
 

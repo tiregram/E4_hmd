@@ -11,10 +11,11 @@
 #include "Texture.hpp"
 #include <SOIL/SOIL.h>
 
-Cubemap::Cubemap(glm::mat4 m,
-                 const char * texture_file):Object(m)
+const float SIZE_CUBE_MAP = 300.0f;
+
+Cubemap::Cubemap(glm::mat4 m,std::vector<std::string>& texture_files):Object(m)
 {
-  this->createOpengl(texture_file);
+  this->createOpengl(texture_files);
 }
 
 
@@ -24,13 +25,10 @@ void Cubemap::setVPmatrix(glm::mat4* v, glm::mat4* p) {
 }
 
 Cubemap::Cubemap(const Cubemap& other):Object(other.modelMatrix){
-  std::cout <<"Cubemap create b"  << "\n";
   this->set_father(other.get_father());
 }
 
 Cubemap& Cubemap::operator =(const Cubemap& other) {
-  std::cout <<"Cubemap create c"  << "\n";
-
   return *this;
 }
 
@@ -57,88 +55,82 @@ void Cubemap::draw()
   glDepthMask(GL_TRUE);
 }
 
-void Cubemap::createOpengl(const char * texture_file)
+void Cubemap::createOpengl(std::vector<std::string>& texture_files)
 {
-  // create ShaderProgram
 	programID = LoadShadersFromPathFile( "shader/vertCUBEMAP.glsl", "shader/fragCUBEMAP.glsl" );
 
   ProjectionMatrixID = glGetUniformLocation(programID, "projection");
 	ViewMatrixID  = glGetUniformLocation(programID, "view");
 
+  // TODO put in .obj
   float skyboxVertices[] = {
-    -300.0f,  300.0f, -300.0f,
-    -300.0f, -300.0f, -300.0f,
-    300.0f, -300.0f, -300.0f,
-    300.0f, -300.0f, -300.0f,
-    300.0f,  300.0f, -300.0f,
-    -300.0f,  300.0f, -300.0f,
+    -SIZE_CUBE_MAP,  SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP, -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP, -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP, -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP,  SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP,  SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
 
-    -300.0f, -300.0f,  300.0f,
-    -300.0f, -300.0f, -300.0f,
-    -300.0f,  300.0f, -300.0f,
-    -300.0f,  300.0f, -300.0f,
-    -300.0f,  300.0f,  300.0f,
-    -300.0f, -300.0f,  300.0f,
+    -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP, -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP,  SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP,  SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP,  SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
 
-    300.0f, -300.0f, -300.0f,
-    300.0f, -300.0f,  300.0f,
-    300.0f,  300.0f,  300.0f,
-    300.0f,  300.0f,  300.0f,
-    300.0f,  300.0f, -300.0f,
-    300.0f, -300.0f, -300.0f,
+    SIZE_CUBE_MAP, -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP, -SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP,  SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP,  SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP,  SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP, -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
 
-    -300.0f, -300.0f,  300.0f,
-    -300.0f,  300.0f,  300.0f,
-    300.0f,  300.0f,  300.0f,
-    300.0f,  300.0f,  300.0f,
-    300.0f, -300.0f,  300.0f,
-    -300.0f, -300.0f,  300.0f,
+    -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP,  SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP,  SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP,  SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP, -SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
 
-    -300.0f,  300.0f, -300.0f,
-    300.0f,  300.0f, -300.0f,
-    300.0f,  300.0f,  300.0f,
-    300.0f,  300.0f,  300.0f,
-    -300.0f,  300.0f,  300.0f,
-    -300.0f,  300.0f, -300.0f,
+    -SIZE_CUBE_MAP,  SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP,  SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP,  SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP,  SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP,  SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP,  SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
 
-    -300.0f, -300.0f, -300.0f,
-    -300.0f, -300.0f,  300.0f,
-    300.0f, -300.0f, -300.0f,
-    300.0f, -300.0f, -300.0f,
-    -300.0f, -300.0f,  300.0f,
-    300.0f, -300.0f,  300.0f
+    -SIZE_CUBE_MAP, -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP, -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP, -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,
+    -SIZE_CUBE_MAP, -SIZE_CUBE_MAP,  SIZE_CUBE_MAP,
+    SIZE_CUBE_MAP, -SIZE_CUBE_MAP,  SIZE_CUBE_MAP
   };
 
   glGenBuffers(1, &vertexBufferID);
   glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID );
 	glBufferData(GL_ARRAY_BUFFER, 36 * sizeof(glm::vec3), &skyboxVertices[0], GL_STATIC_DRAW);
 
-  this->setupCubeMap();
+  this->setupCubeMap(texture_files);
 }
 
 
-void Cubemap::setupCubeMap() {
+void Cubemap::setupCubeMap(std::vector<std::string>& texture_files) {
 
-
-  std::vector<std::string> map_fil=
-    {"obj/mp_totality/totality_ft.tga",
-     "obj/mp_totality/totality_bk.tga",
-     "obj/mp_totality/totality_up.tga",
-     "obj/mp_totality/totality_dn.tga",
-
-     "obj/mp_totality/totality_rt.tga",
-     "obj/mp_totality/totality_lf.tga"
-    };
+  // TODO search why SOIL load doesn't work
 
   int width, height, channels;
   unsigned char *ht_map;
 
   std::vector<unsigned char*> map_charged;
-  for(auto a : map_fil){
+  for(auto one_texture_face : texture_files){
+
+    // add a check on file existence
+
     ht_map == NULL;
     ht_map= SOIL_load_image
       (
-       a.c_str(),
+       one_texture_face.c_str(),
        &width, &height, &channels,
        SOIL_LOAD_RGB
        );
@@ -147,12 +139,6 @@ void Cubemap::setupCubeMap() {
     if( NULL == ht_map)
       {
         printf( "SOIL loading error: '%s'\n", SOIL_last_result() );
-      }else
-      {
-        std::cout << a << " "
-                  << width << " "
-                  << height << " "
-                  << channels << "\n";
       }
     map_charged.push_back(ht_map);
   }

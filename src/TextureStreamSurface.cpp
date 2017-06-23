@@ -108,6 +108,12 @@ void TextureStreamSurface::createObject() {
   
 }
 
+TextureStreamSurface::~TextureStreamSurface() noexcept
+{
+  
+}
+
+
 void TextureStreamSurface::createOpengl() {
   
 }
@@ -126,8 +132,6 @@ void TextureStreamSurface::update(double delta_time) {
 int  TextureStreamSurface::get_id(){return win_id;}
 
 void TextureStreamSurface::draw() {
-
-
 
   glBindTexture(GL_TEXTURE_2D, TextureID);
   glBindBufferARB(GL_PIXEL_UNPACK_BUFFER_ARB, pboID);
@@ -151,7 +155,6 @@ void TextureStreamSurface::draw() {
 
 
   glUseProgram(shaderID);
-
 
   ///////////////////////////////////////////////////////////
   //////////         Set Uniform Values          ////////////

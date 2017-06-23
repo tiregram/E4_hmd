@@ -30,7 +30,8 @@ void Scene::addObject(Object* obj) {
 //! Destructor
 Scene::~Scene() noexcept
 {
-
+  for(auto object : objects)
+    delete(object);
 }
 
 void  Scene::draw()
@@ -69,6 +70,5 @@ Scene::update()
     one_obj->update(t);
   }
 
-  //return  glfwGetKey(this->glfw_context.getWindow(), GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(this->glfw_context.getWindow()) == 0 ;
   return glfw_context.getKey();
 }

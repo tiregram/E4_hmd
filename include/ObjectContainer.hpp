@@ -10,7 +10,7 @@ public:
 
 	ObjectContainer(glm::mat4 m);
 
-  ~ObjectContainer() noexcept{};
+  ~ObjectContainer() noexcept;
 
 	std::vector<Object *> get_objects();
 

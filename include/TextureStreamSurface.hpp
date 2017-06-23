@@ -13,8 +13,6 @@
 class TextureStreamSurface : public Object
 {
 public:
-  int win_id;
-  virtual int get_id();
 
   //! Default constructor
   TextureStreamSurface(glm::mat4 m, GLuint width=100,GLuint height =100);
@@ -23,7 +21,7 @@ public:
   TextureStreamSurface(const TextureStreamSurface &other);
 
   //! Destructor
-  virtual ~TextureStreamSurface() noexcept{};
+  virtual ~TextureStreamSurface() noexcept;
 
   void createObject();
 
@@ -37,10 +35,11 @@ public:
   TextureStreamSurface& operator=(TextureStreamSurface &&other) noexcept{};
 
   //! update the pixel grid on a given memory zone
+  //  comment to use lambda function
   //  void updatePixels(GLubyte* dst, int size);
 
 
-  virtual void update(double delta_time);
+  virtual void update(double t);
   virtual void draw();
   virtual void setVPmatrix(glm::mat4* v, glm::mat4* p);
 
@@ -81,6 +80,11 @@ public:
 
   glm::mat4* projectionMatrix ;
   glm::mat4* viewMatrix;
+
+
+
+  int win_id;
+  virtual int get_id();
 
 protected:
 private:
