@@ -79,7 +79,7 @@ public:
 protected:
 private:
   ohmd_context* ctx;
-  ohmd_device_settings* settings;
+
   ohmd_device* hmd;
 
   float ipd;

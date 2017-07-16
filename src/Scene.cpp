@@ -16,7 +16,6 @@
 Scene::Scene(OpenHmdWrapper& ophmd,GLFWContext& glfw_context):left(LEFT,ophmd,*this),right(RIGHT,ophmd,*this),hmd(ophmd),glfw_context(glfw_context) {
   this->left.setVPmatrix(&viewMatrix,&projectionMatrix);
   this->right.setVPmatrix(&viewMatrix,&projectionMatrix);
-
 }
 
 
@@ -30,7 +29,8 @@ void Scene::addObject(Object* obj) {
 //! Destructor
 Scene::~Scene() noexcept
 {
-  for(auto object : objects)
+  std::cout <<"eroor"  << "\n";
+  for(auto& object : objects)
     delete(object);
 }
 

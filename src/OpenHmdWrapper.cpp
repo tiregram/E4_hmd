@@ -14,7 +14,7 @@ OpenHmdWrapper::OpenHmdWrapper() {
 		std::cout <<"failed to probe devices: %s\n"<< ohmd_ctx_get_error(ctx)  << "\n";
   }
 
-	settings = ohmd_device_settings_create(ctx);
+  ohmd_device_settings* settings = ohmd_device_settings_create(ctx);
   int auto_update = 1;
 
 	ohmd_device_settings_seti(settings, OHMD_IDS_AUTOMATIC_UPDATE, &auto_update);
@@ -23,7 +23,6 @@ OpenHmdWrapper::OpenHmdWrapper() {
 	ohmd_device_geti(hmd, OHMD_SCREEN_HORIZONTAL_RESOLUTION, &hmd_w);
 	ohmd_device_geti(hmd, OHMD_SCREEN_VERTICAL_RESOLUTION, &hmd_h);
 
- 
 	ohmd_device_getf(hmd, OHMD_EYE_IPD, &ipd);
 
 	//viewport is half the screen
@@ -169,4 +168,7 @@ void OpenHmdWrapper::createShader() {
 
 
 //! Destructor
-OpenHmdWrapper::~OpenHmdWrapper() noexcept{}
+OpenHmdWrapper::~OpenHmdWrapper() noexcept
+{
+  ohmd_ctx_destroy(this->ctx);
+}

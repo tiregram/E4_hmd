@@ -15,7 +15,8 @@ std::vector<Object *> ObjectContainer::get_objects()
 
 ObjectContainer::~ObjectContainer() noexcept
 {
-  for(auto obj : this->objects_contained)
+  std::cout <<"free children"  << "\n";
+  for(auto& obj : this->objects_contained)
     {
       delete obj;
     }

@@ -12,7 +12,9 @@ class GLFWContext
 public:
 
   GLFWContext(const unsigned int w, const unsigned int h);
-
+  virtual ~GLFWContext() {
+    glfwTerminate();
+    };
 
   void computeMatricesFromInputs();
   void swapBuffers();
