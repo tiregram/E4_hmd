@@ -89,8 +89,8 @@ int main(int argc, char *argv[])
   /////////////////////////////////////////////////////////////////////////////
   //                      Connection to display manager                      //
   /////////////////////////////////////////////////////////////////////////////
-  // auto testConnectionArthur= new ObjectConnection(glm::mat4(1.0f));
-  // sce.addObject(testConnectionArthur);
+   auto testConnectionArthur= new ObjectConnection(glm::mat4(1.0f));
+   sce.addObject(testConnectionArthur);
 
   /////////////////////////////////////////////////////////////////////////////
   //                                contener                                //

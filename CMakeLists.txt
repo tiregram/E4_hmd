@@ -66,6 +66,6 @@ FILE(
 include_directories("$ENV{HOME}/OpenHMD/include" ${CMAKE_BINARY_DIR}/include ${GLFW_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIR})
 link_directories(${CMAKE_BINARY_DIR})
 add_executable(openglexample ${src_mesh})
-target_link_libraries(openglexample PRIVATE ${HIDAPI_LIBRARIES} "$ENV{HOME}/OpenHMD/libopenhmd.a" pthread m ${GLFW_LIBRARIES} ${GLEW_LIBRARIES} ${OPENGL_LIBRARIES} ${ASSIMP_LIBRARIES})
+target_link_libraries(openglexample PRIVATE ${HIDAPI_LIBRARIES} "/usr/lib/libopenhmd.so" pthread m ${GLFW_LIBRARIES} ${GLEW_LIBRARIES} ${OPENGL_LIBRARIES} ${ASSIMP_LIBRARIES})
 target_link_libraries(openglexample PRIVATE wmlib_shared)
 

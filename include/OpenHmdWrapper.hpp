@@ -1,5 +1,5 @@
 #pragma once
-#include <openhmd.h>
+#include <openhmd/openhmd.h>
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include "Side.hpp"
